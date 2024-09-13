@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <motion.div className="relative min-h-screen w-full flex flex-col items-center justify-center bg-white text-black p-4 z-[200] overflow-hidden">
       <div className="fixed inset-0 overflow-hidden">
-      <div className="h-full w-full flex flex-col items-center justify-center">
+      <div className="h-full w-full flex flex-col items-center justify-center relative">
         <div className="w-full flex flex-col items-center justify-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-20 -space-y-3">
           <SplitText
             words="Franck Chapelon"
@@ -67,7 +67,7 @@ export default function Hero() {
           ></motion.div>
 
           {/* Boutons */}
-          <div className="flex flex-col sm:flex-row justify-between items-center w-full">
+          <div className="flex flex-col sm:flex-row justify-between items-center w-full relative">
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -77,7 +77,7 @@ export default function Hero() {
                 stiffness: 100,
                 damping: 10,
               }}
-              className=""
+              className="relative"
             >
               <MagneticButton>
                 <ScaleButton
@@ -99,7 +99,7 @@ export default function Hero() {
                 stiffness: 100,
                 damping: 10,
               }}
-              className=""
+              className="relative"
             >
               <MagneticButton>
                 <ScaleButton
