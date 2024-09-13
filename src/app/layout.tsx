@@ -61,10 +61,12 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${sawarabiMincho.variable} ${inter.variable} ${berkshireSwash.variable} ${pinyonScript.variable}  ${luxuriousScript.variable} ${allura.variable} antialiased`}
+        className={`${sawarabiMincho.variable} ${inter.variable} ${berkshireSwash.variable} ${pinyonScript.variable}  ${luxuriousScript.variable} ${allura.variable} antialiased relative`}
       >
-        <Header />
-        {children}
+        <div className="relative min-h-screen w-full">
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   );

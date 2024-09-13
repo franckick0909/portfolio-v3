@@ -27,6 +27,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/branding"
-  ],
+, "src/app/loading.tsx.bak"  ],
   "exclude": ["node_modules"]
 }

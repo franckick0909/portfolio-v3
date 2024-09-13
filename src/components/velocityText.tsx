@@ -1,3 +1,6 @@
+"use client"
+
+import { useRef } from "react";
 import {
     motion,
     useScroll,
@@ -5,14 +8,13 @@ import {
     useTransform,
     useSpring,
   } from "framer-motion";
-  import React, { useRef } from "react";
 
-  interface VelocityTextProps {
+interface VelocityTextProps {
     containerClassName?: string;
     children: React.ReactNode;
   }
 
-  export const VelocityText: React.FC<VelocityTextProps> = ({ containerClassName = "", children }) => {
+  export const VelocityText: React.FC<VelocityTextProps> = ({ containerClassName = "", children }: VelocityTextProps) => {
     const targetRef = useRef(null);
 
     const { scrollYProgress } = useScroll({
@@ -35,7 +37,7 @@ import {
     return (
       <section
         ref={targetRef}
-        className={`bg-transparent text-white ${containerClassName}`}
+        className={`relative ${containerClassName}`}
       >
         <div className="sticky top-0 flex h-full items-center overflow-hidden">
           <motion.div
@@ -46,5 +48,5 @@ import {
           </motion.div>
         </div>
       </section>
-    );
+  );
 };
