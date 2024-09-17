@@ -7,7 +7,7 @@ export const navLinks = [
     {
         id: "Projets",
         name: "Projets",
-        href: "/projects",
+        href: "/projets",
     },
     {
         id: "À propos",
@@ -71,3 +71,36 @@ export const socialLinks = [
         icon: SiMalt,
     },
 ]
+
+export const projects = [
+    {
+      id: "01",
+      name: "Angel Tattoo",
+      link: "/projets/projet1",
+      image: "/projets/section/codeur3.jpg",
+    },
+    {
+      id: "02",
+      name: "DBMovies",
+      link: "/projets/projet2",
+      image: "/projets/section/portfolio-v2.png",
+    },
+    {
+      id: "03",
+      name: "Portfolio V2",
+      link: "/projets/projet3",
+      image: "/projets/section/bank6.webp",
+    },
+    {
+      id: "04",
+      name: "Kasa",
+      link: "/projets/projet4",
+      image: "/projets/section/kasa3.webp",
+    },
+    {
+      id: "05",
+      name: "Sophie Bluel",
+      link: "/projets/projet5",
+      image: "/projets/section/food6.webp",
+    }
+  ];

@@ -15,7 +15,7 @@ export const ScaleButton: React.FC<ScaleButtonProps> = ({ text, hoverText, href,
   return (
     <motion.a
       href={href}
-      className={`shadow-md relative flex items-center justify-center px-10 py-2 text-lg  overflow-hidden rounded-full border border-black ${className}`}
+      className={`shadow-md relative flex items-center justify-center px-10 py-2 overflow-hidden rounded-full border border-black ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ scaleX: 1.05, transition: { type: "spring", stiffness: 200, damping: 10, bounce: 1 } }}

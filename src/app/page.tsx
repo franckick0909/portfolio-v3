@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import Hero from "./hero/page";
+import Projets from "./projets/page";
 
-const HeroTransition = dynamic(() => import("../components/heroTransition"), { ssr: false });
+const HeroTransition = dynamic(() => import("../components/heroTransition"), {
+  ssr: false,
+});
 const Branding = dynamic(() => import("./branding/page"), { ssr: false });
 
 export default function Home() {
@@ -28,7 +31,10 @@ export default function Home() {
     <main className="relative flex flex-col items-center justify-center w-full bg-white">
       <AnimatePresence mode="wait">
         {isLoading ? (
-          <HeroTransition key="transition" onLoadingComplete={handleLoadingComplete} />
+          <HeroTransition
+            key="transition"
+            onLoadingComplete={handleLoadingComplete}
+          />
         ) : (
           <motion.div
             key="content"
@@ -39,6 +45,7 @@ export default function Home() {
           >
             <Hero />
             <Branding />
+            <Projets />
           </motion.div>
         )}
       </AnimatePresence>

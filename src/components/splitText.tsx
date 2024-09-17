@@ -14,14 +14,15 @@ export function SplitText({ words, className, startDelay = 0, children }: SplitT
   return (
     <div className={className}>
       {allWords.map((word, index) => (
-        <motion.div key={index} style={{ overflow: 'hidden', display: 'inline-block', marginRight: '0.25em', lineHeight: '1.25' }}>
+        <motion.div key={index} style={{ overflow: 'hidden', display: 'inline-block', paddingRight: '0.25em', lineHeight: '1.25' }}>
           <motion.span    
-            initial={{ y: '100%', opacity: 0.5 }}
-            animate={{ y: 0, opacity: 1 }}
+            initial={{ y: '100%', opacity: 0.8, skewY: 20, perspective: 1000, scale: 0.8 }}
+            whileInView={{ y: 0, opacity: 1, skewY: 0, perspective: 1000, scale: 1 }}
             transition={{ 
               duration: 0.8,
               delay: startDelay + index * 0.1,
-              ease: [0.33, 1, 0.68, 1]
+              ease: [0.33, 1, 0.68, 1],
+              viewport: { once: false, amount: 0.5 },
             }}
             style={{ display: typeof word === 'string' ? 'inline-block' : 'block' }}
           >

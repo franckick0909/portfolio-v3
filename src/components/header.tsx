@@ -11,7 +11,6 @@ import { GiArrowhead } from "react-icons/gi";
 import StickyCursor from "./stickyCursor";
 
 export default function Header() {
-
   const interactiveElementRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -108,29 +107,35 @@ export default function Header() {
 
   return (
     <>
-      <header ref={interactiveElementRef} className="fixed top-0 left-0 right-0 z-[400] mix-blend-difference">
-        <StickyCursor stickyElement={interactiveElementRef} />
-        <div className="fixed top-8 left-0 ml-20 lg:ml-48 xl:ml-80 flex justify-between items-center mix-blend-difference z-[300]">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="text-2xl text-white hover:text-gray-300 transition-colors flex flex-col items-start font-serif font-semibold group z-[300]"
-          >
-            <div className="flex items-center">
-              <span className="w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-6 mr-2"></span>
-              <span className="transform transition-all duration-300 group-hover:translate-x-2">Franck</span>
-            </div>
-            <div className="flex items-center">
-              <span className="w-6 h-[1px] bg-white transition-all duration-300 group-hover:w-0 mr-2"></span>
-              <span className="font-light transform transition-all duration-300 group-hover:-translate-x-2">Chapelon</span>
-            </div>
-          </Link>
-        </div>
+      <header
+        ref={interactiveElementRef}
+        className="fixed top-0 left-0 right-0 z-[400] mix-blend-difference mx-4 md:mx-12 lg:mx-24 xl:mx-48 h-24 flex items-center justify-between"
+      >
 
-        <BurgerButton isOpen={isOpen} toggleOpen={() => setIsOpen(!isOpen)} />
+          <StickyCursor stickyElement={interactiveElementRef} />
+          <div className=" flex justify-between items-center mix-blend-difference z-[300]">
+            {/* Logo */}
+            <Link
+              href="/"
+              className="text-base md:text-lg lg:text-2xl text-white hover:text-gray-300 transition-colors flex flex-col items-start font-serif font-semibold group z-[300] "
+            >
+              <div className="flex items-center">
+                <span className="w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-6 mr-2"></span>
+                <span className="transform transition-all duration-300 group-hover:translate-x-2">
+                  Franck
+                </span>
+              </div>
+              <div className="flex items-center">
+                <span className="w-6 h-[1px] bg-white transition-all duration-300 group-hover:w-0 mr-2"></span>
+                <span className="font-light transform transition-all duration-300 group-hover:-translate-x-2">
+                  Chapelon
+                </span>
+              </div>
+            </Link>
+          </div>
+
+          <BurgerButton isOpen={isOpen} toggleOpen={() => setIsOpen(!isOpen)} />
       </header>
-
-      
 
       {/* Navigation Mobile */}
       <AnimatePresence mode="sync">
@@ -148,12 +153,11 @@ export default function Header() {
               initial="closed"
               animate="open"
               exit="closed"
-              className="absolute inset-0 bg-white"
+              className="absolute inset-0 bg-white hidden lg:block"
             />
 
-            <div className="w-full grid grid-cols-1 lg:grid-cols-2 place-items-center items-baseline place-content-between px-4 md:px-12 lg:px-24 xl:px-48 py-28 mx-auto container">
-
-               {/* Navigation Links */} 
+            <div className="w-full grid grid-cols-1 lg:grid-cols-2 place-items-center items-baseline place-content-evenly px-4 md:px-12 lg:px-24 xl:px-48 py-24 mx-auto container">
+              {/* Navigation Links */}
               <div className="w-full h-full col-span-1 flex flex-col justify-center items-start lg:items-start">
                 {navLinks.map((item, index) => (
                   <motion.div
@@ -172,7 +176,7 @@ export default function Header() {
                 ))}
               </div>
               {/* Social Links */}
-              <div className="relative w-full h-full col-span-1 flex lg:flex-col flex-wrap justify-center items-end gap-4 text-start">
+              <div className="relative w-full h-full col-span-1 flex flex-col justify-start items-start lg:items-end gap-1 lg:gap-4 text-start">
                 {socialLinks.map((item, index) => (
                   <motion.a
                     key={item.id || `social-${index}`}

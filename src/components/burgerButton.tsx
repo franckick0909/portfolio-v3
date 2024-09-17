@@ -1,3 +1,5 @@
+"use client"
+
 import { motion } from "framer-motion"
 import { useState } from "react"
 
@@ -30,7 +32,7 @@ export default function BurgerButton({ isOpen, toggleOpen }: BurgerButtonProps) 
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             aria-label="Menu de navigation"
-            className="fixed top-8 right-0 mr-4 lg:mr-40 xl:mr-60 2xl:mr-80 w-16 h-16 rounded-full flex items-center justify-center p-2  group mix-blend-difference"
+            className=" w-16 h-16 rounded-full flex items-center justify-center p-2  group mix-blend-difference"
         >
             <div className="relative w-8 h-8 flex flex-col justify-center items-center">
                 <motion.span
