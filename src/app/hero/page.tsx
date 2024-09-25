@@ -6,41 +6,44 @@ import MagneticButton from "../../components/magneticButton";
 import { ScaleButton } from "../../components/scaleButton";
 import StickyCursor from "../../components/stickyCursor";
 import { AnimatedText } from "@/components/animatedText";
+import CerclesAnimes from "@/components/cerclesAnimés";
 
 export default function Hero() {
   const interactiveElementRef = useRef<HTMLDivElement>(null);
 
   return (
     <motion.div className="relative min-h-screen w-full flex flex-col items-center justify-center bg-white text-black p-4 z-[200] overflow-hidden">
+      <CerclesAnimes />
       <div className="fixed inset-0 overflow-hidden">
 
         <div className="flex flex-col items-center justify-center h-full px-4 md:px-8 lg:px-16 xl:px-32">
-          <div className="flex flex-col items-center justify-center mb-20 leading-tight -space-y-4 text-3xl md:text-5xl lg:text-6xl xl:text-7xl ">
-            <div className="flex items-center">
+          <div className="flex flex-col items-center justify-center mb-20 -space-y-4 text-3xl md:text-5xl lg:text-6xl xl:text-7xl max-w-full">
+
+            <div className="flex w-full items-center leading-snug">
               <AnimatedText
                 text="Franck Chapelon"
-                className="font-berkshire-swash z-10 tracking-tight flex items-center"
+                className="font-marcellus z-10 font-normal flex items-center tracking-tight"
               />
               <AnimatedText
                 text="est&nbsp;un"
-                className="font-pinyon-script z-10 leading-[0.9] "
+                className="font-pinyon-script z-10 leading-[0.7] "
               />
             </div>
 
-            <div className="flex items-center leading-normal">
-              <AnimatedText text="Freelance" className="font-pinyon-script leading-[0.9]" />
+            <div className="flex items-center leading-normal w-full">
+              <AnimatedText text="Freelance" className="font-pinyon-script leading-none" />
 
               <AnimatedText
                 text="Designer"
-                className="font-serif tracking-tight"
+                className="font-marcellus tracking-tight leading-normal font-normal"
               />
-              <AnimatedText text="&" className="font-allura leading-[0.8]" />
+              <AnimatedText text="&" className="font-roboto-serif font-extralight leading-none" />
             </div>
 
 
             <AnimatedText
               text="Développeur Nextjs"
-              className="font-serif z-10 tracking-tight"
+              className="font-marcellus z-10 font-normal leading-snug "
             />
           </div>
 

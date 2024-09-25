@@ -7,8 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import BurgerButton from "./burgerButton";
 import AnimatedLink from "./animatedLink";
-import { GiArrowhead } from "react-icons/gi";
 import StickyCursor from "./stickyCursor";
+import Arrow from "./arrow";
 
 export default function Header() {
   const interactiveElementRef = useRef<HTMLDivElement>(null);
@@ -109,7 +109,7 @@ export default function Header() {
     <>
       <header
         ref={interactiveElementRef}
-        className="fixed top-0 left-0 right-0 z-[400] mix-blend-difference mx-4 md:mx-12 lg:mx-24 xl:mx-48 h-24 flex items-center justify-between"
+        className="fixed top-0 left-0 right-0 z-[2000] mix-blend-difference mx-4 md:mx-12 lg:mx-24 xl:mx-48 h-24 flex items-center justify-between"
       >
 
           <StickyCursor stickyElement={interactiveElementRef} />
@@ -117,17 +117,17 @@ export default function Header() {
             {/* Logo */}
             <Link
               href="/"
-              className="text-base md:text-lg lg:text-2xl text-white hover:text-gray-300 transition-colors flex flex-col items-start font-serif font-semibold group z-[300] "
+              className="text-base md:text-lg lg:text-2xl text-white hover:text-gray-300 transition-colors flex flex-col items-start group z-[300] mix-blend-difference"
             >
-              <div className="flex items-center">
+              <div className="flex items-center font-marcellus font-semibold">
                 <span className="w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-6 mr-2"></span>
-                <span className="transform transition-all duration-300 group-hover:translate-x-2">
+                <span className="transform transition-all duration-300 group-hover:translate-x-2 ">
                   Franck
                 </span>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center font-light font-marcellus">
                 <span className="w-6 h-[1px] bg-white transition-all duration-300 group-hover:w-0 mr-2"></span>
-                <span className="font-light transform transition-all duration-300 group-hover:-translate-x-2">
+                <span className=" transform transition-all duration-300 group-hover:-translate-x-2">
                   Chapelon
                 </span>
               </div>
@@ -156,14 +156,14 @@ export default function Header() {
               className="absolute inset-0 bg-white hidden lg:block"
             />
 
-            <div className="w-full grid grid-cols-1 lg:grid-cols-2 place-items-center items-baseline place-content-evenly px-4 md:px-12 lg:px-24 xl:px-48 py-24 mx-auto container">
+            <div className="w-full grid grid-cols-1 lg:grid-cols-2  place-content-center px-4 md:px-12 lg:px-24 xl:px-48 mx-auto container gap-8">
               {/* Navigation Links */}
-              <div className="w-full h-full col-span-1 flex flex-col justify-center items-start lg:items-start">
+              <div className="w-full  col-span-1 flex flex-col items-start justify-center">
                 {navLinks.map((item, index) => (
                   <motion.div
                     key={item.id || index}
                     variants={linkVariants}
-                    className="overflow-hidden mb-4"
+                    className="overflow-hidden     "
                   >
                     <AnimatedLink
                       href={item.href}
@@ -188,8 +188,8 @@ export default function Header() {
                   >
                     <item.icon className="text-base md:text-lg lg:text-2xl group-hover:text-gray-600 transition-colors" />
                     {item.name}
-                    <span className="text-base md:text-lg lg:text-2xl -rotate-45 translate-x-0 group-hover:translate-x-2 transition-all duration-300 ease-in-out mr-6">
-                      <GiArrowhead />
+                    <span className="text-base md:text-lg lg:text-2xl rotate-90 translate-x-0 group-hover:translate-x-6 transition-all duration-300 ease-in-out mr-6 ">
+                      <Arrow width={40} height={40} fill="black" stroke="none" />
                     </span>
                   </motion.a>
                 ))}

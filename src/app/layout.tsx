@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
 import {
-  Allura,
+  Marcellus,
   Berkshire_Swash,
   Inter,
   Luxurious_Script,
   Pinyon_Script,
-  Sawarabi_Mincho,
+  Quintessential,
+
 } from "next/font/google";
-import Header from "../components/header";
 import "./globals.css";
 
-const sawarabiMincho = Sawarabi_Mincho({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-sawarabi-mincho",
-  display: "swap",
-});
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -41,10 +35,18 @@ const luxuriousScript = Luxurious_Script({
   display: "swap",
 });
 
-const allura = Allura({
+const quintessential = Quintessential({
   subsets: ["latin"],
   weight: ["400"],
-  variable: "--font-allura",
+  variable: "--font-quintessential",
+  display: "swap",
+});
+
+const marcellus = Marcellus({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-marcellus",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -61,10 +63,9 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${sawarabiMincho.variable} ${inter.variable} ${berkshireSwash.variable} ${pinyonScript.variable}  ${luxuriousScript.variable} ${allura.variable} antialiased relative`}
+        className={` ${inter.variable} ${berkshireSwash.variable} ${pinyonScript.variable}  ${luxuriousScript.variable} ${marcellus.variable} ${quintessential.variable} antialiased relative`}
       >
         <div className="relative min-h-screen w-full">
-          <Header />
           {children}
         </div>
       </body>

@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Hero from "./hero/page";
 import Projets from "./projets/page";
-
+import Header from "@/components/header";
 const HeroTransition = dynamic(() => import("../components/heroTransition"), {
   ssr: false,
 });
@@ -43,6 +43,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="w-full"
           >
+            <Header />
             <Hero />
             <Branding />
             <Projets />

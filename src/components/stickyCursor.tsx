@@ -86,7 +86,7 @@ const StickyCursor: React.FC<StickyCursorProps> = ({ stickyElement }) => {
           width: ringSize,
           height: ringSize,
           borderRadius: '50%',
-          border: '0.2px solid #00000029',
+          border: '0.2px solid #BAB1B449',
           pointerEvents: 'none',
           zIndex: 9999,
           transform: 'translate(-50%, -50%)',

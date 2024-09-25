@@ -72,35 +72,98 @@ export const socialLinks = [
     },
 ]
 
-export const projects = [
+export const projectsData = [
     {
-      id: "01",
-      name: "Angel Tattoo",
-      link: "/projets/projet1",
-      image: "/projets/section/codeur3.jpg",
-    },
-    {
-      id: "02",
-      name: "DBMovies",
-      link: "/projets/projet2",
-      image: "/projets/section/portfolio-v2.png",
-    },
-    {
-      id: "03",
-      name: "Portfolio V2",
-      link: "/projets/projet3",
-      image: "/projets/section/bank6.webp",
-    },
-    {
-      id: "04",
-      name: "Kasa",
-      link: "/projets/projet4",
-      image: "/projets/section/kasa3.webp",
-    },
-    {
-      id: "05",
-      name: "Sophie Bluel",
-      link: "/projets/projet5",
-      image: "/projets/section/food6.webp",
-    }
-  ];
+        id: "01",
+        name: "ANGEL-TATTOO",
+        link: "/projets/all_projets/angel_tattoo",
+        site: "https://angel-tattoo.netlify.app",
+        coverImage: "/projets/tattoo/tattoo1.jpg",
+        description: "Template de site landing page sur le tatouage, avec des animations et des effets graphiques. Le site est responsive et a été développé avec Next.js, Tailwind et Framer Motion. Il contient des animations de boutons, de slides et des effets de hover. Ce site est un template, il peut être utilisé pour n'importe quelle entreprise de tatouage, il suffit de changer les images et les textes. Il contient une page d'accueil, le studio, la galerie d'image de chaque artiste, les tarifs, l'équipe, les derniers projets réalisés, une page de commentaires, et une page de contact. Ce template est un excellent point de départ pour une entreprise de tatouage, qui souhaite présenter son travail de manière professionnelle et attrayante. Le site peut évidemment être amélioré, il est parfait pour une entreprise de tatouage qui souhaite se faire connaître.",
+        images: [
+          {
+            src: '/projets/tattoo/tattoo1.png',
+            alt: 'Description 1',
+            width: 1440,
+            height: 824,
+            size: 'full',
+          },
+          {
+            src: "/projets/tattoo/tattoo2.png",
+            alt: "Page produit optimisée",
+            width: 1440,
+            height: 824,
+            size: 'large'
+          },
+          {
+            src: "/projets/tattoo/tattoo3.png",
+            alt: "Processus de paiement simplifié",
+            width: 1440,
+            height: 824,
+            size: 'medium'
+          },
+          {
+            src: "/projets/tattoo/tattoo4.png",
+            alt: "Page produit optimisée",
+            width: 1440,
+            height: 824,
+            size: 'small'
+          },
+          {
+            src: "/projets/tattoo/tattoo5.png",
+            alt: "Processus de paiement simplifié",
+            width: 1400,
+            height: 800,
+            size: 'medium'
+          },
+          {
+            src: "/projets/tattoo/tattoo6.png",
+            alt: "Page d'accueil du site e-commerce",
+            width: 1440,
+            height: 824,
+            size: 'medium'
+          },
+          {
+            src: "/projets/tattoo/tattoo7.png",
+            alt: "Page produit optimisée",
+            width: 1440,
+            height: 824,
+            size: 'medium'
+          },
+          {
+            src: "/projets/tattoo/tattoo8.png",
+            alt: "Page produit optimisée",
+            width: 1440,
+            height: 824,
+            size: 'medium'
+          },
+          {
+            src: "/projets/tattoo/tattoo9.png",
+            alt: "Page produit optimisée",
+            width: 1440,
+            height: 824,
+            size: 'medium'
+          },
+          {
+            src: "/projets/tattoo/tattoo10.png",
+            alt: "Page produit optimisée",
+            width: 1440,
+            height: 824,
+            size: 'medium'
+          },
+          {
+            src: "/projets/tattoo/tattoo11.png",
+            alt: "Page produit optimisée",
+            width: 1440,
+            height: 824,
+            size: 'medium'
+          },
+        ],
+        subtitle: "Template de site landing page, avec des animations et des effets graphiques.",
+        stacks: ["Next.js", "Tailwind", "Framer Motion"],
+        clientName: "ANGEL-TATTOO",
+        projectDate: "Mars 2023",
+        category: "Branding, Design, Web",
+        github: "",
+      },
+];
