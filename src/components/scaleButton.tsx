@@ -7,14 +7,19 @@ interface ScaleButtonProps {
   href: string;
   bg: string;
   className: string;
+  icon: React.ReactNode;
+  target: string;
+  rel: string;
 }
 
-export const ScaleButton: React.FC<ScaleButtonProps> = ({ text, hoverText, href, bg, className }) => {
+export const ScaleButton: React.FC<ScaleButtonProps> = ({ text, hoverText, href, bg, className, icon, target, rel }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.a
       href={href}
+      target={target}
+      rel={rel} 
       className={`shadow-md relative flex items-center justify-center px-10 py-2 overflow-hidden rounded-full border border-black ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -36,6 +41,7 @@ export const ScaleButton: React.FC<ScaleButtonProps> = ({ text, hoverText, href,
       >
         {text}
       </motion.span>
+      {icon}
       <motion.span
         className="absolute inset-0 z-10 flex items-center justify-center"
         initial={{ y: 40 }}
