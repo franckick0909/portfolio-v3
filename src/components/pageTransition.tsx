@@ -14,7 +14,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
   const curveAmount = 0; // Ajustez cette valeur pour plus ou moins de courbure
 
   return (
-    <>
+    <div className="relative">
       <AnimatePresence>
         {showBlue && (
           <motion.div
@@ -40,6 +40,6 @@ export default function PageTransition({ children }: { children: React.ReactNode
         )}
       </AnimatePresence>
       {children}
-    </>
+    </div>
   );
 }

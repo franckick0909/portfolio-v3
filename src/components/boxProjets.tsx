@@ -14,7 +14,7 @@ export default function BoxProjets({
   traitBg?: string 
 }) {
   return (
-    <div className="w-full flex flex-col items-center justify-center py-72 bg-white px-4">
+    <div className="w-full flex flex-col items-center justify-center py-64 bg-white px-4">
         <AnimatedText
         text={titles}
         className="text-6xl font-normal text-black font-marcellus mb-20"

@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { navLinks, socialLinks } from "../data/data";
-import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import BurgerButton from "./burgerButton";
@@ -12,8 +11,8 @@ import Arrow from "./arrow";
 
 export default function Header() {
   const interactiveElementRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   const menuVariants = {
     closed: {
@@ -105,6 +104,28 @@ export default function Header() {
     },
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map(link => link.href.replace('/#', ''));
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Appel initial pour définir la section active au chargement
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       <header
@@ -163,13 +184,13 @@ export default function Header() {
                   <motion.div
                     key={item.id || index}
                     variants={linkVariants}
-                    className="overflow-hidden     "
+                    className="overflow-hidden"
                   >
                     <AnimatedLink
                       href={item.href}
                       text={item.name}
                       index={index}
-                      isActive={pathname === item.href}
+                      isActive={activeSection === item.href.replace('/#', '')}
                       onClick={() => setIsOpen(false)}
                     />
                   </motion.div>

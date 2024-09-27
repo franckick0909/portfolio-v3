@@ -58,17 +58,26 @@ export default function Projets() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setHoveredProject(null)}
-      className="relative flex flex-col items-center justify-center min-h-[150vh] w-full bg-stone-100 py-16 z-[201]"
+      className="relative flex flex-col items-center justify-center min-h-[100vh] w-full bg-stone-100 py-10 z-[202]"
     >
-      <h2 className="font-marcellus font-normal tracking-tight text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-6xl py-16">
+
+<div className="container mx-auto px-4 relative">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-marcellus text-start mb-4">
         Projets Sélectionnés
       </h2>
 
-      <div className="flex items-center gap-4 mb-12">
-        <h3>Tous les projets</h3>
-        <span>|</span>
-        <h3>Projets sélectionnés</h3>
-      </div>
+      <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="flex items-center mb-16"
+        >
+          <div className="w-16 h-0.5 bg-black mr-4" />
+          <h3 className="text-2xl md:text-3xl lg:text-4xl font-pinyon-script">
+            Mes derniers projets
+          </h3>
+        </motion.div>
+        </div>
 
       <div className="w-full h-full">
         {projectsData.map((project, index) => (
@@ -181,7 +190,7 @@ const ImageProjets = ({
         opacity: { type: "spring", stiffness: 80, damping: 20 },
         y: { type: "spring", stiffness: 100, damping: 20 },
       }}
-      className="relative lg:w-[25vw] lg:h-[20vh] rounded-full overflow-hidden z-[400]"
+      className="relative lg:w-[25vw] lg:h-[23vh] rounded-full overflow-hidden z-[400]"
 
       style={{
         x: transformedX,

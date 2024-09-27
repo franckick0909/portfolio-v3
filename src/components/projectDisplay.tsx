@@ -8,6 +8,7 @@ import Image from "next/image";
 import BoxProjets from "./boxProjets";
 import { FaGithub } from "react-icons/fa";
 import { useRef } from "react";
+import { useRouter } from 'next/navigation';
 
 interface ImageData {
   src: string;
@@ -78,18 +79,32 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
   nextProject,
 }) => {
 
+  const router = useRouter();
+
+  const handleReturnToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    router.push('/');
+    setTimeout(() => {
+      const projectsSection = document.getElementById('projets');
+      projectsSection?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [-10, 500]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [-130, 400]);
   const springY1 = useSpring(y1, { stiffness: 200, damping: 30 });
-  const y2 = useTransform(scrollYProgress, [0, 1], [-700, 200]);
-  const springY2 = useSpring(y2, { stiffness: 200, damping: 30 });
-  const y3 = useTransform(scrollYProgress, [0, 1], [-400, 700]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [100, -300]);
   const springY3 = useSpring(y3, { stiffness: 200, damping: 30 });
+
+  const scaleY1 = useTransform(scrollYProgress, [0, 1], [0.5, 1.2]);
+  const springScaleY1 = useSpring(scaleY1, { stiffness: 200, damping: 30 });
+  const scaleY2 = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+  const springScaleY2 = useSpring(scaleY2, { stiffness: 200, damping: 30 });
 
 
 
@@ -160,7 +175,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
 
       <div ref={container} className="relative w-full min-h-screen flex flex-col flex-wrap mb-8">
         <motion.div
-          className="flex flex-col items-center justify-start w-full h-full"
+          className="flex flex-col items-center justify-start w-full  overflow-hidden mt-8 pt-20"
         >
           <motion.div
             variants={itemVariants}
@@ -176,7 +191,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
               width={project.images[0].width}
               height={project.images[0].height}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              priority
+              loading="lazy"
               quality={100}
               className="object-contain w-full h-auto rounded-lg shadow-lg"
             />
@@ -206,14 +221,14 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="flex flex-col sm:flex-row justify-between gap-4"
+              className="flex flex-col sm:flex-row justify-between gap-4 overflow-hidden py-8"
             >
               {project.images.slice(1, 4).map((image, index) => (
                 <motion.div
                   key={index}
                   className="flex-grow mb-4 sm:mb-0"
                   variants={itemVariants}
-                  style={{ y: springY3 }}
+                  style={{ y: index === 0 ? springY1 : index === 1 ? springY3 : springY1 }}
                 >
                   <Image
                     src={image.src}
@@ -244,8 +259,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mx-auto my-72 w-full "
-          style={{ y: springY3 }}
+          className="mx-auto mt-64 w-full "
         >
           <Image
             src={project.images[4].src}
@@ -281,7 +295,6 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
           whileInView="visible"
           viewport={{ once: true }}
           className="mx-auto mt-72 w-full px-4"
-          style={{ y: springY2 }}
         >
           <Image
             src={project.images[5].src}
@@ -303,14 +316,13 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
           </motion.p>
         </motion.div>
 
-        <motion.div className="flex items-center w-full">
+        <motion.div className="flex items-center w-full overflow-hidden">
           <div className=" mx-auto my-8 w-full px-4">
             <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              style={{ y: springY2 }}
               className="flex flex-col sm:flex-row justify-between gap-4"
             >
               {project.images.slice(6, 8).map((image, index) => (
@@ -353,15 +365,13 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
 
         <motion.div
           className="flex items-center w-full h-full py-72"
-          style={{}}
         >
-          <div className="max-w-[100rem] mx-auto my-8 w-full px-4">
+          <div className="max-w-[100rem] mx-auto my-8 w-full px-4 overflow-hidden py-4">
             <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              style={{ y: springY2 }}
               className="flex flex-col sm:flex-row justify-between gap-4"
             >
               {project.images.slice(8, 11).map((image, index) => (
@@ -369,6 +379,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
                   variants={itemVariants}
                   key={index}
                   className="flex-grow mb-4 sm:mb-0"
+                  style={{ scale: index === 0 ? springScaleY2 : index === 1 ? springScaleY1 : springScaleY2 }}
                 >
                   <Image
                     src={image.src}
@@ -440,9 +451,9 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
               ← {prevProject.name}
             </Link>
           )}
-          <Link href="/hero" className="font-semibold hover:underline">
-            ← Retour Accueil
-          </Link>
+          <a href="/#projets" onClick={handleReturnToProjects} className="font-semibold hover:underline">
+            ← Retour Projets
+          </a>
           {nextProject && (
             <Link
               href={nextProject.link}
@@ -459,20 +470,3 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
 
 export default ProjectDisplay;
 
-{
-  /* 
-
-
-          <Image
-            src={project.images[0].src}
-            alt={project.images[0].alt || "Image du projet"}
-            width={project.images[0].width}
-            height={project.images[0].height}
-            sizes="100vw"
-            priority
-            quality={100}
-            className="object-contain w-full h-auto"
-          />
-
- */
-}

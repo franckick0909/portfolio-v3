@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useCallback } from 'react';
 
 const CerclesAnimes: React.FC = () => {
@@ -54,7 +56,7 @@ const CerclesAnimes: React.FC = () => {
   };
 
   return (
-    <div ref={backgroundRef} className="fixed inset-0 -z-10 overflow-hidden"></div>
+    <div ref={backgroundRef} className="fixed inset-0 -z-50 overflow-hidden"></div>
   );
 };
 

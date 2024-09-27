@@ -6,6 +6,8 @@ import dynamic from "next/dynamic";
 import Hero from "./hero/page";
 import Projets from "./projets/page";
 import Header from "@/components/header";
+import Services from "./services/page";
+import A_Propos from "./à propos/page";
 const HeroTransition = dynamic(() => import("../components/heroTransition"), {
   ssr: false,
 });
@@ -17,11 +19,30 @@ export default function Home() {
 
   useEffect(() => {
     setIsMounted(true);
+    const hasLoaded = localStorage.getItem('hasLoaded');
+    if (hasLoaded) {
+      setIsLoading(false);
+    }
   }, []);
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
+    localStorage.setItem('hasLoaded', 'true');
   };
+
+  useEffect(() => {
+    if (!isLoading) {
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 0);
+      }
+    }
+  }, [isLoading]);
 
   if (!isMounted) {
     return null; // ou un composant de chargement si vous préférez
@@ -47,6 +68,8 @@ export default function Home() {
             <Hero />
             <Branding />
             <Projets />
+            <Services />
+            <A_Propos />
           </motion.div>
         )}
       </AnimatePresence>

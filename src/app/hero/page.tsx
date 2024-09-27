@@ -12,9 +12,9 @@ export default function Hero() {
   const interactiveElementRef = useRef<HTMLDivElement>(null);
 
   return (
-    <motion.div className="relative min-h-screen w-full flex flex-col items-center justify-center bg-white text-black p-4 z-[200] overflow-hidden">
+    <motion.section id="hero" className="relative min-h-screen w-full flex flex-col items-center justify-center bg-white text-black p-4 z-[200] overflow-hidden">
       <CerclesAnimes />
-      <div className="fixed inset-0 overflow-hidden">
+      <div className="fixed inset-0 overflow-hidden z-10">
 
         <div className="flex flex-col items-center justify-center h-full px-4 md:px-8 lg:px-16 xl:px-32">
           <div className="flex flex-col items-center justify-center mb-20 -space-y-4 text-3xl md:text-5xl lg:text-6xl xl:text-7xl max-w-full">
@@ -91,8 +91,11 @@ export default function Hero() {
                   <ScaleButton
                     text="Voir mon travail"
                     hoverText="Découvrir mes projets"
-                    href="#work"
+                    href="/projets"
                     bg="bg-white"
+                    icon=""
+                    target=""
+                    rel=""
                     className="text-white bg-black hover:text-black flex z-10 whitespace-nowrap relative"
                   />
                 </MagneticButton>
@@ -113,8 +116,11 @@ export default function Hero() {
                   <ScaleButton
                     text="Me contacter"
                     hoverText="Discutons"
-                    href="#contact"
+                    href="/contact"
                     bg="bg-black"
+                    icon=""
+                    target=""
+                    rel=""
                     className="text-black bg-white hover:text-white z-10 whitespace-nowrap"
                   />
                 </MagneticButton>
@@ -123,6 +129,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-    </motion.div>
+    </motion.section>
   );
 }
