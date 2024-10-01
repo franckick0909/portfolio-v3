@@ -5,12 +5,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Hero from "./hero/page";
 import Projets from "./projets/page";
-import Header from "@/components/header";
 import Services from "./services/page";
 import A_Propos from "./à propos/page";
-const HeroTransition = dynamic(() => import("../components/heroTransition"), {
-  ssr: false,
-});
+import HomeLoading from "./homeLoading";
+import Lenis from 'lenis'
+
 const Branding = dynamic(() => import("./branding/page"), { ssr: false });
 
 export default function Home() {
@@ -18,10 +17,19 @@ export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
+
+  useEffect(() => {
     setIsMounted(true);
     const hasLoaded = localStorage.getItem('hasLoaded');
     if (hasLoaded) {
-      setIsLoading(false);
+      setIsLoading(true);  //
     }
   }, []);
 
@@ -48,14 +56,14 @@ export default function Home() {
     return null; // ou un composant de chargement si vous préférez
   }
 
+
+
+
   return (
     <main className="relative flex flex-col items-center justify-center w-full bg-white">
       <AnimatePresence mode="wait">
         {isLoading ? (
-          <HeroTransition
-            key="transition"
-            onLoadingComplete={handleLoadingComplete}
-          />
+          <HomeLoading key="loading" onLoadingComplete={handleLoadingComplete} />
         ) : (
           <motion.div
             key="content"
@@ -64,7 +72,6 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="w-full"
           >
-            <Header />
             <Hero />
             <Branding />
             <Projets />

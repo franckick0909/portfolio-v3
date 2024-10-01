@@ -13,6 +13,7 @@ import {
 } from "framer-motion";
 import React, { useRef, useState } from "react";
 import Arrow from "@/components/arrow";
+import { AnimatedTitle } from "@/components/animatedTitle";
 
 export default function Projets() {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
@@ -58,26 +59,28 @@ export default function Projets() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setHoveredProject(null)}
-      className="relative flex flex-col items-center justify-center min-h-[100vh] w-full bg-stone-100 py-10 z-[202]"
+      className="relative flex flex-col items-center justify-center min-h-[100vh] w-full bg-stone-100 py-20 z-[202]"
     >
+      <div className="px-4 relative flex flex-col items-start pb-20">
+        <AnimatedTitle
+          text="Projets Sélectionnés"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-marcellus mb-4 leading-normal"
+          delay={0.2}
+        />
 
-<div className="container mx-auto px-4 relative">
-      <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-marcellus text-start mb-4">
-        Projets Sélectionnés
-      </h2>
-
-      <motion.div
+        <motion.div
           initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="flex items-center mb-16"
+          className="flex items-center"
         >
           <div className="w-16 h-0.5 bg-black mr-4" />
           <h3 className="text-2xl md:text-3xl lg:text-4xl font-pinyon-script">
             Mes derniers projets
           </h3>
         </motion.div>
-        </div>
+      </div>
 
       <div className="w-full h-full">
         {projectsData.map((project, index) => (
@@ -115,7 +118,6 @@ export default function Projets() {
             <div className="relative">
               <Link href={project.link}>
                 <div className="flex items-center px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 mx-auto w-full z-10">
-
                   <div className="relative flex items-center justify-between w-full z-10">
                     <div className="leading-snug py-2 h-full flex items-center justify-start group-hover:translate-x-12 transition-transform duration-500">
                       <Digits id={project.id} />
@@ -153,9 +155,6 @@ export default function Projets() {
       <div className="w-full h-full overflow-hidden z-[202] py-10 mt-24 inline-block text-center">
         <Link
           href="/projets/tous"
-
-
-
           className="text-lg font-semibold hover:underline"
         >
           Voir tous les projets →
@@ -191,7 +190,6 @@ const ImageProjets = ({
         y: { type: "spring", stiffness: 100, damping: 20 },
       }}
       className="relative lg:w-[25vw] lg:h-[23vh] rounded-full overflow-hidden z-[400]"
-
       style={{
         x: transformedX,
         translateX: "-50%",

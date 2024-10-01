@@ -7,7 +7,7 @@ import PageEnterTransition from "@/components/pageEnterTransition";
 import { Section } from "@/components/section";
 
 export default function ProjetDbMovies() {
-    const currentProjectIndex = projectsData.findIndex((p) => p.id === "01");
+    const currentProjectIndex = projectsData.findIndex((p) => p.id === "05");
     const projet = projectsData[currentProjectIndex] as unknown as Project;
   
     if (!projet) {

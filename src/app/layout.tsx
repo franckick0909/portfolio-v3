@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Header from "@/components/header";
 import {
   Marcellus,
   Berkshire_Swash,
@@ -9,6 +10,7 @@ import {
 
 } from "next/font/google";
 import "./globals.css";
+import { ReactLenis } from "@/components/Utils/lenis";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -62,13 +64,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body
-        className={` ${inter.variable} ${berkshireSwash.variable} ${pinyonScript.variable}  ${luxuriousScript.variable} ${marcellus.variable} ${quintessential.variable} antialiased relative`}
+      <ReactLenis root>
+        <body
+          className={` ${inter.variable} ${berkshireSwash.variable} ${pinyonScript.variable}  ${luxuriousScript.variable} ${marcellus.variable} ${quintessential.variable} antialiased relative`}
       >
         <div className="relative min-h-screen w-full">
+          <Header />
           {children}
         </div>
       </body>
+      </ReactLenis>
     </html>
   );
 }

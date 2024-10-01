@@ -28,9 +28,9 @@ const defaultAnimations = {
     rotateX: 0,
     skewY: 0,
     transition: {
-      duration: 0.5,
+      duration: 1,
       ease: [0.76, 0.1, 0.24, 1],
-      viewport: { once: false, amount: 0.5 },
+      viewport: { once: false, amount: 0.3 },
     },
   },
 };
@@ -43,12 +43,12 @@ export const AnimatedText = ({
   repeatDelay,
   animation = defaultAnimations,
   delay = 0,
-  duration = 0.7,
+  duration = 1,
 }: AnimatedTextProps) => {
   const controls = useAnimation();
   const textArray = Array.isArray(text) ? text : [text];
   const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.5, once });
+  const isInView = useInView(ref, { amount: 0.3, once });
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;

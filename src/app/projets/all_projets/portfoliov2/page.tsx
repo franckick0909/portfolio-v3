@@ -2,10 +2,9 @@
 
 import { projectsData } from "@/data/data";
 import ProjectDisplay, { Project } from "@/components/projectDisplay";
-import Image from "next/image";
 import PageTransition from "@/components/pageTransition";
 import PageEnterTransition from "@/components/pageEnterTransition";
-import { motion } from "framer-motion";
+import { Section } from "@/components/section";
 
 export default function ProjetDbMovies() {
     const currentProjectIndex = projectsData.findIndex((p) => p.id === "03");
@@ -22,30 +21,22 @@ export default function ProjetDbMovies() {
       | Project
       | undefined;
   
+    console.log("Image source:", projet.coverImage);
+
     return (
       <PageTransition>
         <PageEnterTransition>
           <section className="bg-white min-h-screen h-full w-full">
-            <motion.div
-              className="w-full h-screen relative flex"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ ease: "easeOut", duration: 1, delay: 0.8 }}
-            >
-              <Image
-                src={projet.coverImage}
-                alt={`${projet.name} cover`}
-                fill
-                sizes="100vw"
-                priority
-                quality={100}
-                className="object-cover"
-              />
-  
-              <h1 className="text-white text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                {projet.name}
-              </h1>
-            </motion.div>
+
+            <Section
+                imageSrc={projet.coverImage}
+                tag={projet.subtitle}
+                title={projet.name}  
+                clientName={projet.clientName}
+                projectDate={projet.projectDate}
+                category={projet.category}
+                stacks={projet.stacks}
+            />
   
             <div className="overflow-hidden">
               <ProjectDisplay
