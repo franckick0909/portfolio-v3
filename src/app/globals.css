@@ -25,3 +25,12 @@ html.lenis, html.lenis body {
   .lenis.lenis-smooth iframe {
     pointer-events: none;
   }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

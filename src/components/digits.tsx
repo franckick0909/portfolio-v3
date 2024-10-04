@@ -6,9 +6,9 @@ export default function Digits({ id }: { id: string }) {
       {id.split("").map((digit, index) => (
         <motion.span
           key={`top-${index}`}
-          className="font-marcellus font-normal text-3xl md:text-5xl lg:text-6xl xl:text-8xl pb-2 absolute"
+          className="font-marcellus font-extralight text-3xl md:text-5xl lg:text-6xl xl:text-8xl pb-2 absolute"
 
-          style={{ left: `${index * 54}%` }} // Ajusté le positionnement horizontal
+          style={{ left: `${index * 58}%` }} // Ajusté le positionnement horizontal
           initial={{ y: "200%" }}
           animate={{ y: 0 }}
           transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -22,7 +22,7 @@ export default function Digits({ id }: { id: string }) {
       {id.split("").map((digit, index) => (
         <motion.span
           key={`bottom-${index}`}
-          className="font-pinyon-script text-4xl md:text-6xl lg:text-8xl font-normal inline-block absolute"
+          className="font-pinyon-script text-4xl md:text-6xl lg:text-8xl font-extralight inline-block absolute"
           style={{ left: `${index * 38}%` }} // Ajusté le positionnement horizontal
           initial={{ y: "200%" }}
           variants={{

@@ -6,30 +6,22 @@ import dynamic from "next/dynamic";
 import Hero from "./hero/page";
 import Projets from "./projets/page";
 import Services from "./services/page";
-import A_Propos from "./à propos/page";
+import TextVelocity from "./textVelocity/page";
+import A_Propos from "./a_propos/page";
 import HomeLoading from "./homeLoading";
-import Lenis from 'lenis'
-
+import StickyCursor from "@/components/stickyCursor";
 const Branding = dynamic(() => import("./branding/page"), { ssr: false });
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  }, []);
+  const stickyElements = ['a', 'h1', 'h2', 'h3', 'img', 'button']; // Ajoutez ici les sélecteurs pour les éléments que vous voulez "sticky"
 
   useEffect(() => {
     setIsMounted(true);
     const hasLoaded = localStorage.getItem('hasLoaded');
     if (hasLoaded) {
-      setIsLoading(true);  //
+      setIsLoading(true);  // à changer pour false
     }
   }, []);
 
@@ -39,11 +31,11 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (!isLoading) {
-      const hash = window.location.hash;
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#', '');
       if (hash) {
         setTimeout(() => {
-          const element = document.querySelector(hash);
+          const element = document.getElementById(hash);
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
           }
@@ -56,11 +48,9 @@ export default function Home() {
     return null; // ou un composant de chargement si vous préférez
   }
 
-
-
-
   return (
     <main className="relative flex flex-col items-center justify-center w-full bg-white">
+      <StickyCursor stickyElements={stickyElements} />
       <AnimatePresence mode="wait">
         {isLoading ? (
           <HomeLoading key="loading" onLoadingComplete={handleLoadingComplete} />
@@ -75,6 +65,7 @@ export default function Home() {
             <Hero />
             <Branding />
             <Projets />
+            <TextVelocity />
             <Services />
             <A_Propos />
           </motion.div>

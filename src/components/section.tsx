@@ -41,25 +41,43 @@ export const Section: React.FC<{
         <p className="text-sm uppercase">{tag}</p>
 
         <div className="relative flex flex-col gap-4 mt-4">
-            <span className="text-sm uppercase underline underline-offset-4">Technologies utilisées :</span>
-            <ul className="list-disc list-inside grid gap-1 mt-4">
-              {stacks?.map((tech: string, techIndex: number) => (
-                <li key={techIndex}>
-                  <p className="text-sm inline-block bg-black text-white rounded-full px-3 py-[2px]">
-                    {tech}
-                  </p>
-                </li>
-              ))}
-            </ul>
+          <div className="inline-block w-fit">
+            <h3
+              className="text-sm font-extralight text-stone-100 hover:text-white font-inter uppercase tracking-wide relative
+                            before:content-[''] before:absolute before:w-full before:h-[1px] before:bottom-0 before:left-0 
+                            before:bg-white before:origin-right before:scale-x-0 hover:before:origin-left hover:before:scale-x-100
+                            before:transition-transform before:duration-500 before:ease-in-out"
+            >
+              Technologies utilisées :
+            </h3>
+          </div>
+          <ul className="list-disc list-inside grid gap-1 mt-4">
+            {stacks?.map((tech: string, techIndex: number) => (
+              <li key={techIndex}>
+                <p className="text-sm inline-block bg-black text-white rounded-full px-3 py-[2px]">
+                  {tech}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
       <div className="absolute bottom-0 p-24 flex justify-between w-4/5 gap-[4px] max-w-[700px] text-white z-[2001]">
-        <HightLightItem title="Client" content={clientName || "Nom du client"} />
+        <HightLightItem
+          title="Client"
+          content={clientName || "Nom du client"}
+        />
         <div className="relative w-[2px] h-full bg-white" />
-        <HightLightItem title="Date" content={projectDate || "Date du projet"} />
+        <HightLightItem
+          title="Date"
+          content={projectDate || "Date du projet"}
+        />
         <div className="relative w-[2px] h-full bg-white" />
-        <HightLightItem title="Catégorie" content={category || "Catégorie du projet"} />
+        <HightLightItem
+          title="Catégorie"
+          content={category || "Catégorie du projet"}
+        />
       </div>
     </section>
   );
@@ -71,10 +89,15 @@ const HightLightItem: React.FC<{ title: string; content: string }> = ({
 }) => {
   return (
     <div className="flex flex-col items-start gap-4 border-l-2 border-white pl-4">
-      <span className="text-sm uppercase underline underline-offset-4">
+      <span
+        className="text-sm font-extralight text-stone-100 hover:text-white font-inter uppercase tracking-wide relative
+                            before:content-[''] before:absolute before:w-full before:h-[1px] before:bottom-0 before:left-0 
+                            before:bg-white before:origin-right before:scale-x-0 hover:before:origin-left hover:before:scale-x-100
+                            before:transition-transform before:duration-500 before:ease-in-out"
+      >
         {title}
       </span>
-      <p className="text-xl font-bold">{content}</p>
+      <p className="text-xl font-extralight font-inter">{content}</p>
     </div>
   );
 };

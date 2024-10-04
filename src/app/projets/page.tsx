@@ -64,7 +64,7 @@ export default function Projets() {
       <div className="px-4 relative flex flex-col items-start pb-20">
         <AnimatedTitle
           text="Projets Sélectionnés"
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-marcellus mb-4 leading-normal"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-marcellus mb-4 leading-normal"
           delay={0.2}
         />
 
@@ -75,8 +75,8 @@ export default function Projets() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="flex items-center"
         >
-          <div className="w-16 h-0.5 bg-black mr-4" />
-          <h3 className="text-2xl md:text-3xl lg:text-4xl font-pinyon-script">
+          <div className="w-16 h-[1px] bg-black mr-4" />
+          <h3 className="text-base md:text-lg lg:text-xl font-inter uppercase text-stone-700">
             Mes derniers projets
           </h3>
         </motion.div>

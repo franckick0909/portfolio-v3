@@ -62,7 +62,7 @@ export const ElasticTrait: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-24">
+    <div className="relative w-full h-20 z-50">
       <motion.span
         className="absolute top-0 left-0 w-full h-full cursor-pointer"
         onMouseEnter={animateIn}
@@ -70,7 +70,7 @@ export const ElasticTrait: React.FC = () => {
         onMouseMove={manageMouseMove}
       />
       <svg className="w-full h-full">
-        <path ref={path} fill="none" stroke="black" strokeWidth="0.5" />
+        <path ref={path} fill="none" stroke="black" strokeWidth="1" />
       </svg>
     </div>
   );

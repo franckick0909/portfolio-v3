@@ -11,6 +11,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { ReactLenis } from "@/components/Utils/lenis";
+import Footer from "@/components/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -68,9 +69,12 @@ export default function RootLayout({
         <body
           className={` ${inter.variable} ${berkshireSwash.variable} ${pinyonScript.variable}  ${luxuriousScript.variable} ${marcellus.variable} ${quintessential.variable} antialiased relative`}
       >
-        <div className="relative min-h-screen w-full">
+        <div className="flex flex-col min-h-screen">
           <Header />
-          {children}
+          <main className="flex-grow">
+            {children}
+          </main>
+           <Footer />
         </div>
       </body>
       </ReactLenis>

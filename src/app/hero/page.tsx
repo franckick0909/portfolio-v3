@@ -1,17 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef } from "react";
 import MagneticButton from "../../components/magneticButton";
 import { ScaleButton } from "../../components/scaleButton";
-import StickyCursor from "../../components/stickyCursor";
 import { AnimatedText } from "@/components/animatedText";
 import CerclesAnimes from "@/components/cerclesAnimés";
 import HeroTransition from "@/components/heroTransition";
 
 export default function Hero() {
-  const interactiveElementRef = useRef<HTMLDivElement>(null);
-
+  
   return (
     <HeroTransition>
       <motion.section
@@ -62,13 +59,11 @@ export default function Hero() {
             </div>
 
             <motion.div
-              ref={interactiveElementRef}
               className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-0 relative w-full max-w-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <StickyCursor stickyElement={interactiveElementRef} />
 
               {/* Trait horizontal */}
               <motion.div

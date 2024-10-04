@@ -10,19 +10,19 @@ export const navLinks = [
     href: "/#projets",
   },
   {
-    id: "À propos",
-    name: "À propos",
-    href: "/#à propos",
-  },
-  {
     id: "Services",
     name: "Services",
     href: "/#services",
   },
   {
+    id: "À propos",
+    name: "À propos",
+    href: "/#a_propos",
+  },
+  {
     id: "Tarifs",
     name: "Tarifs",
-    href: "/tarifs",
+    href: "/#tarifs",
   },
   {
     id: "Contact",
@@ -546,3 +546,18 @@ export const accordionItems2 = [
       "Oui, je travaille sur l'optimisation pour les moteurs de recherche (SEO) pour garantir que votre site est visible et accessible aux gens.",
   },
 ]
+
+
+export const dataAbout = {
+  title: "Un peu plus sur moi.",
+  subtitle1: "Qui suis-je",
+  description1: "Je m'appelle Franck Chapelon et je suis un développeur web passionné. Je crée des expériences web uniques et engageantes.",
+  subtitle2: "Ce que je fais.",
+  description2: "Je suis développeur indépendant à temps plein. Bien que je me spécialise dans la création d'identités de marque et de sites Web, j'aime la variété et j'aime relever des défis créatifs uniques. Si vous voulez faire une différence ou réimaginer le monde dans lequel nous vivons, j'aimerais en faire partie.",
+  subtitle3: "D'où je viens.",
+  description3: "J'ai grandi dans un village de l'Essonne (91), dans un environnement calme et naturel. J'ai toujours été attiré par les nouvelles technologies et j'ai décidé de suivre cette voie. J'ai appris à programmer en autodidacte et avec la formation OpenClassrooms et j'ai travaillé sur des projets personnels pour améliorer mes compétences.",
+  subtitle4: "Pourquoi le design ?",
+  description4: "Je crois que le design a un impact réel et tangible sur le monde et joue un rôle énorme (quoique parfois subtil) dans la façon dont les gens comprennent les problèmes, les personnes et les produits. J'aime le design parce que je pense qu'il rend le monde plus beau et plus connecté.",
+  subtitle5: "Quand pouvons-nous discuter ?",
+  description5: "Tout de suite, je réponds généralement dans la journée, alors n'hésitez pas à me contacter en cliquant sur le bouton ci-dessous.",
+}

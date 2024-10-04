@@ -1,16 +1,14 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { navLinks, socialLinks } from "../data/data";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import BurgerButton from "./burgerButton";
 import AnimatedLink from "./animatedLink";
-import StickyCursor from "./stickyCursor";
 import Arrow from "./arrow";
 
 export default function Header() {
-  const interactiveElementRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
@@ -129,11 +127,9 @@ export default function Header() {
   return (
     <>
       <header
-        ref={interactiveElementRef}
         className="fixed top-0 left-0 right-0 z-[2000] mix-blend-difference mx-4 md:mx-12 lg:mx-24 xl:mx-48 h-24 flex items-center justify-between"
       >
 
-          <StickyCursor stickyElement={interactiveElementRef} />
           <div className=" flex justify-between items-center mix-blend-difference z-[300]">
             {/* Logo */}
             <Link

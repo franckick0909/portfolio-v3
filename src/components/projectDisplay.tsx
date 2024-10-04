@@ -147,7 +147,6 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
             />
           </MagneticButton>
         </div>
-
         <div className="w-full h-[1px] bg-current mt-10" />
       </div>
 

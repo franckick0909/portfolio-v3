@@ -4,10 +4,10 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 interface StickyCursorProps {
-  stickyElement: React.RefObject<HTMLElement>;
+  stickyElements?: string[];
 }
 
-const StickyCursor: React.FC<StickyCursorProps> = ({ stickyElement }) => {
+const StickyCursor: React.FC<StickyCursorProps> = ({ stickyElements = [] }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cursor = useRef<HTMLDivElement>(null);
 
@@ -16,7 +16,7 @@ const StickyCursor: React.FC<StickyCursorProps> = ({ stickyElement }) => {
     y: useMotionValue(0)
   };
 
-  const smoothOptions = { damping: 40, stiffness: 800, mass: 0.2 };
+  const smoothOptions = { damping: 20, stiffness: 300, mass: 0.5 };
   const smoothMouse = {
     x: useSpring(mouse.x, smoothOptions),
     y: useSpring(mouse.y, smoothOptions)
@@ -24,8 +24,8 @@ const StickyCursor: React.FC<StickyCursorProps> = ({ stickyElement }) => {
 
   const scale = useSpring(1, smoothOptions);
 
-  const cursorSize = useTransform(scale, [1, 2], [10, 60]);
-  const ringSize = useTransform(scale, (s) => s === 1 ? cursorSize.get() + 50 : cursorSize.get());
+  const cursorSize = useTransform(scale, [1, 2], [10, 10]);
+  const ringSize = useTransform(scale, [1, 2], [0, 150]); // Augmentation de la taille pour plus d'espace
 
   const manageMouseMove = useCallback((e: MouseEvent) => {
     const { clientX, clientY } = e;
@@ -44,21 +44,27 @@ const StickyCursor: React.FC<StickyCursorProps> = ({ stickyElement }) => {
   }, [scale]);
 
   useEffect(() => {
-    const element = stickyElement.current;
-    if (element) {
-      element.addEventListener("mouseenter", manageMouseOver);
-      element.addEventListener("mouseleave", manageMouseLeave);
-    }
+    if (!stickyElements || stickyElements.length === 0) return; // Vérification supplémentaire
+
+    const elements = stickyElements.flatMap(selector => 
+      Array.from(document.querySelectorAll(selector))
+    );
+    
+    elements.forEach(element => {
+      element.addEventListener("mouseenter", manageMouseOver as EventListener);
+      element.addEventListener("mouseleave", manageMouseLeave as EventListener);
+    });
+
     window.addEventListener("mousemove", manageMouseMove);
 
     return () => {
-      if (element) {
-        element.removeEventListener("mouseenter", manageMouseOver);
-        element.removeEventListener("mouseleave", manageMouseLeave);
-      }
+      elements.forEach(element => {
+        element.removeEventListener("mouseenter", manageMouseOver as EventListener);
+        element.removeEventListener("mouseleave", manageMouseLeave as EventListener);
+      });
       window.removeEventListener("mousemove", manageMouseMove);
     };
-  }, [stickyElement, manageMouseMove, manageMouseOver, manageMouseLeave]);
+  }, [stickyElements, manageMouseMove, manageMouseOver, manageMouseLeave]);
 
   return (
     <>
@@ -71,10 +77,10 @@ const StickyCursor: React.FC<StickyCursorProps> = ({ stickyElement }) => {
           width: cursorSize,
           height: cursorSize,
           borderRadius: '50%',
-          backgroundColor: isHovered ? 'white' : 'white',
+          backgroundColor: 'white',
           mixBlendMode: "difference",
           pointerEvents: 'none',
-          zIndex: 9999,
+          zIndex: 9998,
           transform: 'translate(-50%, -50%)',
         }}
       />
@@ -86,12 +92,49 @@ const StickyCursor: React.FC<StickyCursorProps> = ({ stickyElement }) => {
           width: ringSize,
           height: ringSize,
           borderRadius: '50%',
-          border: '0.2px solid #BAB1B449',
+          border: "0.2px solid #BAB1B479",
           pointerEvents: 'none',
           zIndex: 9999,
           transform: 'translate(-50%, -50%)',
+          opacity: isHovered ? 1 : 0,
+          mixBlendMode: "difference",
         }}
-      />
+      >
+        {isHovered && (
+          <motion.svg
+            animate={{
+              rotate: 360,
+            }}
+            transition={{
+              duration: 8,
+              ease: "linear",
+              repeat: Infinity,
+            }}
+            viewBox="0 0 100 100"
+            style={{ width: '100%', height: '100%', overflow: 'visible' }}
+          >
+            {[0, 120, 240].map((angle, index) => (
+              <motion.text
+                key={index}
+                x="50"
+                y="50"
+                fontSize="10"
+                fontFamily="Inter"
+                fontWeight="500"
+                fill="white"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                style={{ 
+                  transform: `rotate(${angle}deg) translate(0, -47px)`,
+                  transformOrigin: 'center',
+                }}
+              >
+                • VOIR •
+              </motion.text>
+            ))}
+          </motion.svg>
+        )}
+      </motion.div>
     </>
   );
 };
