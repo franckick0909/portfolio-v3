@@ -4,19 +4,21 @@ import { motion } from 'framer-motion';
 interface ScaleButtonProps {
   text: string;
   hoverText: string;
-  href: string;
+  href: string | undefined;
   bg: string;
   className: string;
   icon: React.ReactNode;
   target: string;
   rel: string;
+  type: string | undefined;
 }
 
-export const ScaleButton: React.FC<ScaleButtonProps> = ({ text, hoverText, href, bg, className, icon, target, rel }) => {
+export const ScaleButton: React.FC<ScaleButtonProps> = ({ text, hoverText, href, bg, className, icon, target, rel, type }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.a
+      type={type}
       href={href}
       target={target}
       rel={rel} 

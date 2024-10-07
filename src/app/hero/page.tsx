@@ -106,6 +106,7 @@ export default function Hero() {
                       target=""
                       rel=""
                       className="text-white bg-black hover:text-black flex z-10 whitespace-nowrap relative"
+                      type=""
                     />
                   </MagneticButton>
                 </motion.div>
@@ -131,6 +132,7 @@ export default function Hero() {
                       target=""
                       rel=""
                       className="text-black bg-white hover:text-white z-10 whitespace-nowrap"
+                      type=""
                     />
                   </MagneticButton>
                 </motion.div>
