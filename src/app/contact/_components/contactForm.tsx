@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { sendContactEmail } from "@/app/actions/contactActions";
 import { FaMailBulk } from "react-icons/fa";
+import { Modal } from "@/components/modal";
 
 interface FormData {
   name: string;
@@ -29,6 +30,11 @@ export default function ContactForm() {
     message: "",
   });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errors, setErrors] = useState<{ [key: string]: boolean }>({});
+
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -49,13 +55,30 @@ export default function ContactForm() {
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
+
+    // Réinitialiser l'erreur lorsque l'utilisateur commence à taper
+    if (name === 'name' || name === 'email') {
+      setErrors(prev => ({ ...prev, [name]: false }));
+    }
   };
 
-  console.log(formData);
+  const validateForm = () => {
+    const newErrors: { [key: string]: boolean } = {};
+    if (!formData.name.trim()) newErrors.name = true;
+    if (!formData.email.trim()) newErrors.email = true;
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
+    
+    if (!validateForm()) {
+      setModalMessage("Veuillez remplir tous les champs obligatoires.");
+      setIsSuccess(false);
+      setIsModalOpen(true);
+      return;
+    }
 
     const formDataToSend = new FormData();
     Object.entries(formData).forEach(([key, value]) => {
@@ -65,7 +88,8 @@ export default function ContactForm() {
     try {
       const result = await sendContactEmail(formDataToSend);
       if (result.success) {
-        alert("Message envoyé avec succès !");
+        setIsSuccess(true);
+        setModalMessage("Message envoyé avec succès !");
         setFormData({
           name: "",
           email: "",
@@ -78,12 +102,15 @@ export default function ContactForm() {
           message: "",
         });
       } else {
-        alert(`Erreur lors de l'envoi du message : ${result.message}`);
+        setIsSuccess(false);
+        setModalMessage(`Erreur lors de l'envoi du message : ${result.message}`);
       }
     } catch (error) {
       console.error("Erreur lors de l'envoi du formulaire :", error);
-      alert("Une erreur est survenue lors de l'envoi du message.");
+      setIsSuccess(false);
+      setModalMessage("Une erreur est survenue lors de l'envoi du message.");
     }
+    setIsModalOpen(true);
   };
 
   const handleReset = () => {
@@ -104,14 +131,17 @@ export default function ContactForm() {
     <div className="flex flex-col gap-4 items-center justify-center max-w-[48rem] w-full">
       {/* PREMIERE PARTIE */}
 
-      <div className="w-full flex items-center justify-start text-start">
-        <h2 className="font-marcellus text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-          D&apos;abord, un peu de{" "}
-        </h2>
-        <h2 className="font-pinyon-script text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-          &nbsp;vous
-        </h2>
-      </div>
+      <div className="w-full inline-block">
+          <h2 className="font-marcellus text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+            D&apos;abord, un peu de
+          </h2>
+          <div className="flex items-center justify-start">
+            <div className="left-0 w-[10%] h-[1px] bg-stone-700" />
+          <h2 className="font-pinyon-script text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            &nbsp;vous
+          </h2>
+          </div>
+        </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-14 w-full">
         <div className="flex flex-col relative group">
@@ -122,15 +152,17 @@ export default function ContactForm() {
             value={formData.name}
             name="name"
             id="name"
-            className="px-0 py-1 border-b-2 border-stone-200 outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10"
+            className={`px-0 py-1 border-b-2 ${errors.name ? 'border-red-500 z-50' : 'border-stone-200'} outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10`}
+            required
+            aria-required="true"
           />
           <label
             htmlFor="name"
-            className="absolute left-0 transition-all duration-300 text-black text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-black peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-black"
+            className={`absolute left-0 transition-all duration-300 ${errors.name ? 'text-red-500' : 'text-black'} text-base md:text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-stone-700 peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-stone-700`}
           >
-            Nom
+            Nom *
           </label>
-          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
+          <span className={`absolute bottom-0 left-0 w-full h-0.5 scale-x-0 ${errors.name ? 'bg-red-500' : 'bg-stone-400'} transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2`}></span>
         </div>
 
         <div className="flex flex-col relative group">
@@ -141,15 +173,17 @@ export default function ContactForm() {
             value={formData.email}
             name="email"
             id="email"
-            className="px-0 py-1 border-b-2 border-stone-200 outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10"
+            className={`px-0 py-1 border-b-2 ${errors.email ? 'border-red-500 z-50' : 'border-stone-200'} outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10`}
+            required
+            aria-required="true"
           />
           <label
             htmlFor="email"
-            className="absolute left-0 transition-all duration-300 text-black text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-black peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-black"
+            className={`absolute left-0 transition-all duration-300 ${errors.email ? 'text-red-500' : 'text-black'} text-base md:text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-stone-700 peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-stone-700`}
           >
-            Email
+            Email *
           </label>
-          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
+          <span className={`absolute bottom-0 left-0 w-full h-0.5 scale-x-0 ${errors.email ? 'bg-red-500' : 'bg-stone-400'} transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2`}></span>
         </div>
 
         <div className="flex flex-col relative group">
@@ -164,7 +198,7 @@ export default function ContactForm() {
           />
           <label
             htmlFor="phone"
-            className="absolute left-0 transition-all duration-300 text-black text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-black peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-black"
+            className="absolute left-0 transition-all duration-300 text-black text-base md:text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-stone-700 peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-stone-700"
           >
             Tél
           </label>
@@ -173,13 +207,16 @@ export default function ContactForm() {
 
         {/* DEUXIEME PARTIE */}
 
-        <div className="w-full flex items-center justify-start text-start">
+        <div className="w-full inline-block mt-20 ">
           <h2 className="font-marcellus text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
             Maintenant, un peu de
-            <span className="font-pinyon-script text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-              &nbsp;votre projet
-            </span>
           </h2>
+          <div className="flex items-center">
+            <div className="left-0 w-[10%] h-[1px] bg-stone-700" />
+          <h2 className="font-pinyon-script text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            &nbsp;votre projet
+          </h2>
+          </div>
         </div>
 
         <div className="flex flex-col relative group">
@@ -194,7 +231,7 @@ export default function ContactForm() {
           />
           <label
             htmlFor="compagny"
-            className="absolute left-0 transition-all duration-300 text-black text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-black peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-black"
+            className="absolute left-0 transition-all duration-300 text-black text-base md:text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-stone-700 peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-stone-700"
           >
             Nom de votre entreprise
           </label>
@@ -214,7 +251,7 @@ export default function ContactForm() {
           />
           <label
             htmlFor="urlInput"
-            className="absolute left-0 transition-all duration-300 text-black text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-black peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-black"
+            className="absolute left-0 transition-all duration-300 text-black text-base md:text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-stone-700 peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-stone-700"
           >
             Site web actuel
           </label>
@@ -223,8 +260,9 @@ export default function ContactForm() {
 
         <div className="flex flex-col gap-2">
           <div className="w-full flex items-center justify-start text-start">
+            <div className="left-0 w-[5%] h-[2px] bg-stone-700 mr-2" />
             <h3
-              className="font-inter text-base md:text-base xl:text-lg text-stone-700 uppercase relative inline-block
+              className="font-inter font-medium text-base md:text-base xl:text-lg text-stone-700 uppercase relative inline-block
                           before:content-[''] before:absolute before:w-full before:h-[1px] before:bottom-0 before:left-0 
                           before:bg-stone-700 before:origin-right before:scale-x-0 hover:before:origin-left hover:before:scale-x-100
                           before:transition-transform before:duration-500 before:ease-in-out"
@@ -249,7 +287,7 @@ export default function ContactForm() {
                   name="project"
                   value={option}
                   onChange={handleChange}
-                  className="form-checkbox h-5 w-5 text-black"
+                  className="form-checkbox h-3 w-3 md:h-4 md:w-4 lg:h-5 lg:w-5 text-black"
                 />
                 <span className="text-lg">{option}</span>
               </label>
@@ -258,9 +296,10 @@ export default function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <div className="w-full flex items-center justify-start text-start">
+          <div className="relative w-full flex items-center justify-start text-start">
+            <div className="left-0 w-[5%] h-[2px] bg-stone-700 mr-2" />
             <h3
-              className="font-inter text-base md:text-base xl:text-lg text-stone-700 uppercase relative inline-block
+              className="font-inter font-medium text-base md:text-base xl:text-lg text-stone-700 uppercase relative inline-block
                           before:content-[''] before:absolute before:w-full before:h-[1px] before:bottom-0 before:left-0 
                           before:bg-stone-700 before:origin-right before:scale-x-0 hover:before:origin-left hover:before:scale-x-100
                           before:transition-transform before:duration-500 before:ease-in-out"
@@ -288,7 +327,7 @@ export default function ContactForm() {
                   name="budget"
                   value={option}
                   onChange={handleChange}
-                  className="form-radio h-5 w-5 text-black"
+                  className="form-radio h-3 w-3 md:h-4 md:w-4 lg:h-5 lg:w-5 text-black"
                 />
                 <span className="text-lg">{option}</span>
               </label>
@@ -308,7 +347,7 @@ export default function ContactForm() {
           />
           <label
             htmlFor="budget"
-            className="absolute left-0 transition-all duration-300 text-black text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-black peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-black"
+            className="absolute left-0 transition-all duration-300 text-black text-base md:text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-stone-700 peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-stone-700"
           >
             Avez-vous un budget exact ?
           </label>
@@ -327,7 +366,7 @@ export default function ContactForm() {
           />
           <label
             htmlFor="timeline"
-            className="absolute left-0 transition-all duration-300 text-black text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-black peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-black"
+            className="absolute left-0 transition-all duration-300 text-black text-base md:text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-stone-700 peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-stone-700"
           >
             Quel est votre délai ?
           </label>
@@ -346,25 +385,25 @@ export default function ContactForm() {
           ></textarea>
           <label
             htmlFor="message"
-            className="absolute left-0 transition-all duration-300 text-black text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-black peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-black"
+            className="absolute left-0 transition-all duration-300 text-black text-base md:text-lg tracking-wide font-inter peer-focus:text-sm peer-focus:-top-5 peer-focus:text-stone-700 peer-placeholder-shown:top-1 peer-placeholder-shown:text-lg peer-placeholder-shown:text-black peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-stone-700"
           >
             Message
           </label>
           <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-4">
           <button
             type="submit"
-            className="bg-black text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-white hover:text-black ring-1 ring-black transition-colors duration-300 relative overflow-hidden group"
+            className="bg-black text-white py-2 px-2 md:py-3 md:px-4 lg:py-3 lg:px-6 rounded-full text-lg font-semibold hover:bg-white hover:text-black ring-1 ring-black transition-colors duration-300 relative overflow-hidden group"
           >
             <span className="flex items-center gap-2">
               <span className="relative overflow-hidden inline-flex items-center perspective-1000">
-                <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full group-hover:skew-y-3 py-2 px-1 font-marcellus text-xl font-extralight uppercase">
+                <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full group-hover:skew-y-3 py-2 px-1 font-marcellus text-sm md:text-lg lg:text-xl font-extralight uppercase">
                   Envoyer la demande
                 </span>
                 <span className="absolute top-full inset-0 inline-block whitespace-nowrap">
-                  <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full text-black py-2 font-pinyon-script text-4xl font-medium">
+                  <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full text-black py-1 md:py-2 font-pinyon-script text-2xl md:text-2xl lg:text-4xl font-medium">
                     <div className="flex items-center gap-2">
                       Envoyer
                       <FaMailBulk className="" />
@@ -378,15 +417,15 @@ export default function ContactForm() {
           <button
             type="button"
             onClick={handleReset}
-            className="bg-white text-black py-3 px-6 rounded-full text-lg font-semibold hover:bg-black hover:text-white ring-1 ring-black transition-colors duration-300 relative overflow-hidden group"
+            className="bg-white text-black py-2 px-2 md:py-3 md:px-4 lg:py-3 lg:px-6 rounded-full text-lg font-semibold hover:bg-black hover:text-white ring-1 ring-black transition-colors duration-300 relative overflow-hidden group"
           >
             <span className="flex items-center gap-2">
               <span className="relative overflow-hidden inline-flex items-center perspective-1000">
-                <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full group-hover:skew-y-3 py-2 px-1 font-marcellus text-xl font-extralight uppercase">
+              <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full group-hover:skew-y-3 py-2 px-1 font-marcellus text-sm md:text-lg lg:text-xl font-extralight uppercase">
                   Réinitialiser
                 </span>
                 <span className="absolute top-full inset-0 inline-block whitespace-nowrap">
-                  <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full text-white py-2 font-pinyon-script text-4xl font-medium leading-[0.9]">
+                  <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full text-white py-1 md:py-2 font-pinyon-script text-2xl md:text-2xl lg:text-4xl font-medium leading-[0.9]">
                     Effacer
                   </span>
                 </span>
@@ -395,6 +434,13 @@ export default function ContactForm() {
           </button>
         </div>
       </form>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        message={modalMessage}
+        isSuccess={isSuccess}
+      />
     </div>
   );
 }

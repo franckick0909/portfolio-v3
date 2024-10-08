@@ -9,14 +9,19 @@ import PageEnterTransition from "@/components/pageEnterTransition";
 import { dataAbout } from "@/data/data";
 import { ScrollRevealImages } from "@/components/scrollRevealImages";
 import { AnimatedTitle } from "@/components/animatedTitle";
+import StickyCursor from "@/components/stickyCursor";
 
 export default function Plus() {
+
   const { scrollYProgress } = useScroll();
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   });
+
+
+  const stickyElements = ["plus", "h3", "AnimatedTitle", "ScaleButton", "MagneticButton", "button", "a" ];
 
   return (
     <PageTransition>
@@ -25,6 +30,7 @@ export default function Plus() {
           id="plus"
           className="relative w-full flex flex-col items-center justify-start pt-32 pb-20 bg-white overflow-visible z-[201]"
         >
+          <StickyCursor stickyElements={stickyElements} />
           <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-32">
             <div className="relative flex flex-col md:flex-row items-start gap-12 md:gap-24 min-h-screen">
               <div className="flex flex-col w-full md:w-1/3">
@@ -108,6 +114,7 @@ export default function Plus() {
                     icon={<FaEnvelope />}
                     target=""
                     rel=""
+                    type="button"
                   />
                 </MagneticButton>
 

@@ -18,7 +18,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
       <AnimatePresence>
         {showBlue && (
           <motion.div
-            className="fixed inset-0 z-50 bg-black"
+            className="fixed inset-0 z-50 bg-zinc-200"
             initial={{ clipPath: `inset(100% 0 0 0)` }}
             animate={{ clipPath: `inset(0 0 0 0)` }}
             exit={{ 

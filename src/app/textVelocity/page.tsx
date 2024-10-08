@@ -16,7 +16,7 @@ export default function TextVelocity() {
 
   return (
     <section className="h-full w-full bg-stone-100 relative overflow-hidden">
-      <div className="relative w-full py-4 z-[201] bg-black/70">
+      <div className="relative w-full py-4 z-[201] bg-black/90">
         <VelocityScroll
           content={content}
           default_velocity={1}

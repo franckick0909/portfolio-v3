@@ -17,6 +17,7 @@ import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { StaticImageData } from "next/image";
 import { AnimatedImage } from "./animatedImage";
+import StickyCursor from "./stickyCursor";
 
 interface ImageData {
   src: string;
@@ -117,10 +118,14 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
   const scaleY2 = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
   const springScaleY2 = useSpring(scaleY2, { stiffness: 200, damping: 30 });
 
+  const stickyElements = ["angel_tattoo", "h3", "AnimatedTitle", "ScaleButton", "MagneticButton", "button", "a", "img" ];
+
   return (
     <div className="py-12 relative">
+      <StickyCursor stickyElements={stickyElements} />  
       <div className="relative z-10 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 w-full mb-4">
+
           <MagneticButton>
             <ScaleButton
               text="Voir le site"
@@ -131,6 +136,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
               icon
               bg="bg-white"
               className="text-white bg-black hover:text-black flex z-10 whitespace-nowrap relative"
+              type="button"
             />
           </MagneticButton>
 
@@ -144,6 +150,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
               icon={<FaGithub size={24} />}
               bg="bg-white"
               className="text-white bg-black hover:text-black flex z-10 whitespace-nowrap relative gap-2"
+              type="button"
             />
           </MagneticButton>
         </div>

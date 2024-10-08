@@ -57,6 +57,32 @@ export default function HomeLoading({ onLoadingComplete }: { onLoadingComplete: 
       "/projets/portfoliov2/portfolio10.png",
       "/projets/portfoliov2/portfolio11.png",
 
+      "/projets/sophiebluel/appartement-paris-v.png",
+      "/projets/sophiebluel/im1.png",
+      "/projets/sophiebluel/le-coteau-cassis.png",
+      "/projets/sophiebluel/appartement-paris-v.png",
+      "/projets/sophiebluel/appartement-paris-xviii.png",
+      "/projets/sophiebluel/sophie3.jpg",
+      "/projets/sophiebluel/sophie-bluel-2.webp",
+      "/projets/sophiebluel/bar-lullaby-paris.png",
+      "/projets/sophiebluel/la-balisiere.png",
+      "/projets/sophiebluel/bluel4.png",
+      "/projets/sophiebluel/bluel5.png",
+      "/projets/sophiebluel/bluel6.png",
+
+      "/projets/kasa/kasa14.jpg",
+      "/projets/kasa/oc-kasa.jpg",
+      "/projets/kasa/kasa3.png",
+      "/projets/kasa/kasa5.webp",
+      "/projets/kasa/kasa4.webp",
+      "/projets/kasa/kasa12.jpg",
+      "/projets/kasa/kasa13.jpg",
+      "/projets/kasa/kasa21.jpg",
+      "/projets/kasa/kasa16.jpg",
+      "/projets/kasa/kasa18.jpg",
+      "/projets/kasa/kasa22.jpg",
+      "/projets/kasa/kasa23.jpg",
+      
     ];
 
     let loadedImages = 0;

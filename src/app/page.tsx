@@ -15,7 +15,7 @@ const Branding = dynamic(() => import("./branding/page"), { ssr: false });
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
-  const stickyElements = ['a', 'h1', 'h2', 'h3', 'img', 'button']; // Ajoutez ici les sélecteurs pour les éléments que vous voulez "sticky"
+  const stickyElements = ["h1", "h2", "h3", "img", "AnimatedTitle", "ScaleButton", "MagneticButton", "button", "a", "AnimatedImage", "Footer", "Link" ];
 
   useEffect(() => {
     setIsMounted(true);

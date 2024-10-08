@@ -53,6 +53,7 @@ export default function Projets() {
     }
   };
 
+
   return (
     <section
       id="projets"
@@ -153,12 +154,7 @@ export default function Projets() {
         ))}
       </div>
       <div className="w-full h-full overflow-hidden z-[202] py-10 mt-24 inline-block text-center">
-        <Link
-          href="/projets/tous"
-          className="text-lg font-semibold hover:underline"
-        >
-          Voir tous les projets →
-        </Link>
+
       </div>
     </section>
   );
@@ -189,7 +185,7 @@ const ImageProjets = ({
         opacity: { type: "spring", stiffness: 80, damping: 20 },
         y: { type: "spring", stiffness: 100, damping: 20 },
       }}
-      className="relative lg:w-[25vw] lg:h-[23vh] rounded-full overflow-hidden z-[400]"
+      className="relative lg:w-[30vw] lg:h-[30vh] rounded-full overflow-hidden z-[400]"
       style={{
         x: transformedX,
         translateX: "-50%",
