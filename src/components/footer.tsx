@@ -75,7 +75,7 @@ export default function Footer() {
                       <li key={project.id} className="mb-2">
                         <Link
                           href={project.link}
-                          className="text-sm font-extralight text-stone-300 hover:text-white font-inter uppercase tracking-wide relative inline-block
+                          className="text-sm font-extralight text-gray-300 hover:text-white font-inter uppercase tracking-wide relative inline-block
                           before:content-[''] before:absolute before:w-full before:h-[1px] before:bottom-0 before:left-0 
                           before:bg-white before:origin-right before:scale-x-0 hover:before:origin-left hover:before:scale-x-100
                           before:transition-transform before:duration-500 before:ease-in-out"
@@ -102,7 +102,7 @@ export default function Footer() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-2xl text-stone-500 hover:text-white transition-colors"
+                          className="text-2xl text-gray-400 hover:text-white transition-colors"
                         >
                           <link.icon />
                         </Link>

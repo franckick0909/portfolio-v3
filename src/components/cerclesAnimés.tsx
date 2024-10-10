@@ -22,7 +22,7 @@ const CerclesAnimes: React.FC = () => {
 
   const creerCercle = (echelle: number, dureeBase: number) => {
     const circle = document.createElement('div');
-    circle.className = 'absolute rounded-full border-2 border-zinc-200';
+    circle.className = 'absolute rounded-full border-2 border-gray-100';
     
     const taille = Math.max(window.innerWidth, window.innerHeight) * echelle;
     const x = (window.innerWidth - taille) / 2;
