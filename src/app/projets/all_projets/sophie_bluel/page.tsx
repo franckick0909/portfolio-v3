@@ -1,10 +1,17 @@
-"use client";
-
 import { projectsData } from "@/data/data";
 import ProjectDisplay, { Project } from "@/components/projectDisplay";
 import PageTransition from "@/components/pageTransition";
 import PageEnterTransition from "@/components/pageEnterTransition";
 import { Section } from "@/components/section";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sophie Bluel",
+  description: "Sophie Bluel est une architecte d'intérieur basée en Gironde.",
+  keywords: ["architecture", "intérieur", "Gironde", "JavaScript", "CSS", "SASS", "JSON", "Franck Chapelon"],
+  authors: [{ name: "Franck Chapelon" }],
+  creator: "Franck Chapelon | Développeur web front-end",
+};
 
 export default function ProjetDbMovies() {
     const currentProjectIndex = projectsData.findIndex((p) => p.id === "04");

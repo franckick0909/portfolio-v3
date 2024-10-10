@@ -1,10 +1,18 @@
-"use client";
-
 import { projectsData } from "@/data/data";
 import ProjectDisplay, { Project } from "@/components/projectDisplay";
 import PageTransition from "@/components/pageTransition";
 import PageEnterTransition from "@/components/pageEnterTransition";
 import { Section } from "@/components/section";
+
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Kasa",
+  description: "Kasa est une application de gestion de logement.",
+  keywords: ["gestion", "logement", "Kasa", "React", "JSON", "Franck Chapelon"],
+  authors: [{ name: "Franck Chapelon" }],
+  creator: "Franck Chapelon | Développeur web front-end",
+};
 
 export default function ProjetDbMovies() {
     const currentProjectIndex = projectsData.findIndex((p) => p.id === "05");

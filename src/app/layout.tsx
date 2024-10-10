@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { siteMetadata } from "@/app/metadata";
 import Header from "@/components/header";
 import {
   Marcellus,
@@ -52,11 +52,7 @@ const marcellus = Marcellus({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Franck Chapelon",
-  description:
-    "Franck Chapelon est un freelance designer graphique basé en Aquitaine.",
-};
+export const metadata = siteMetadata;
 
 export default function RootLayout({
   children,

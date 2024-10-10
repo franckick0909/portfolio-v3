@@ -129,7 +129,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
           <MagneticButton>
             <ScaleButton
               text="Voir le site"
-              hoverText="ANGEL-TATTOO"
+              hoverText={project.name}
               href={project.site}
               target="_blank"
               rel="noopener noreferrer"
@@ -143,7 +143,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
           <MagneticButton>
             <ScaleButton
               text="Voir le code"
-              hoverText="ANGEL-TATTOO"
+              hoverText={project.name}
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"

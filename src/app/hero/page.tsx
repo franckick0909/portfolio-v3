@@ -6,11 +6,9 @@ import { ScaleButton } from "../../components/scaleButton";
 import { AnimatedText } from "@/components/animatedText";
 import CerclesAnimes from "@/components/cerclesAnimés";
 import HeroTransition from "@/components/heroTransition";
-import StickyCursor from "@/components/stickyCursor";
 
 export default function Hero() {
 
-  const stickyElements = [  "MagneticButton", "button", "a"];
   
   return (
     <HeroTransition>
@@ -18,7 +16,6 @@ export default function Hero() {
         id="accueil"
         className="relative min-h-[105vh] w-full flex flex-col items-center justify-center bg-white text-black p-4 z-[200] overflow-hidden"
       >
-        <StickyCursor stickyElements={stickyElements} />
         <CerclesAnimes />
         <div className="fixed inset-0 overflow-hidden z-10">
           <div className="flex flex-col items-center justify-center h-full px-4 md:px-8 lg:px-16 xl:px-32">
@@ -104,7 +101,7 @@ export default function Hero() {
                     <ScaleButton
                       text="Voir mon travail"
                       hoverText="Découvrir mes projets"
-                      href="/projets"
+                      href="#projets"
                       bg="bg-white"
                       icon=""
                       target=""

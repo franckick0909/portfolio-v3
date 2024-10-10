@@ -10,6 +10,7 @@ import TextVelocity from "./textVelocity/page";
 import A_Propos from "./a_propos/page";
 import HomeLoading from "./homeLoading";
 import StickyCursor from "@/components/stickyCursor";
+import Tarifs from "./tarifs/page";
 const Branding = dynamic(() => import("./branding/page"), { ssr: false });
 
 export default function Home() {
@@ -67,6 +68,7 @@ export default function Home() {
             <Projets />
             <TextVelocity />
             <Services />
+            <Tarifs />
             <A_Propos />
           </motion.div>
         )}

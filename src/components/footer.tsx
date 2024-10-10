@@ -5,14 +5,12 @@ import { navLinks, socialLinks, projectsData } from "../data/data";
 import Logo from "./logo";
 import { ScaleButton } from "./scaleButton";
 import SimpleAnimatedLink from "./simpleAnimatedLink";
-import StickyCursor from "./stickyCursor";
 
 export default function Footer() {
 
-  const stickyElements = ["footer", "h3", "SimpleAnimatedLink", "ScaleButton", "Link", "a" ];
+
   return (
     <footer className="bg-black text-white py-16 px-4 md:px-12 lg:px-24 xl:px-48 z-[201]">
-      <StickyCursor stickyElements={stickyElements} />
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Logo et slogan */}

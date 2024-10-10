@@ -16,12 +16,12 @@ export default function A_Propos() {
     >
       <div className="container mx-auto flex flex-col-reverse md:flex-row items-start justify-between gap-10 px-4 md:px-8 lg:px-16 xl:px-32">
         <div className="relative flex flex-1 filter grayscale hover:grayscale-0 transition-all duration-300 shadow-lg">
-          <div className="absolute top-0 left-0 w-full h-full bg-black -rotate-1 shadow-lg z-[-1] opacity-50" />
-          <div className="absolute top-0 left-0 w-full h-full bg-stone-500 -rotate-2 shadow-lg z-[-1] opacity-50" />
+          <div className="absolute top-0 left-0 w-full h-0 sm:h-full bg-black -rotate-1 shadow-lg z-[-1] opacity-50" />
+          <div className="absolute top-0 left-0 w-full h-0 sm:h-full bg-stone-500 -rotate-2 shadow-lg z-[-1] opacity-50" />
           <AnimatedImage
             imageSrc="/lunette.jpg"
             alt="À propos"
-            maxHeight="60vh"
+            maxHeight="50vh"
           />
           <Image
             src="/lunette.jpg"
@@ -77,6 +77,7 @@ export default function A_Propos() {
                   target=""
                   rel=""
                   className="text-white bg-black hover:text-black flex z-10 whitespace-nowrap relative"
+                  type="button"
                 />
               </MagneticButton>
             </div>
@@ -88,15 +89,15 @@ export default function A_Propos() {
           <AnimatedTitle
             text="Créons quelque chose"
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-marcellus text-start mb-4"
-            delay={0.1}
+            delay={0}
           />
           <div className="flex items-center mb-16">
             <AnimatedTitle
               text="ensemble"
               className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-pinyon-script text-start mb-4 pt-2 text-stone-700"
-              delay={0.2}
+              delay={0.1}
             />
-            <div className="w-[16%] h-[1px] bg-stone-700" />
+            <div className="w-[5%] sm:w-[10%] md:w-[15%] h-[1px] bg-stone-700" />
 
             <MagneticButton>
               <ScaleButton
@@ -104,10 +105,11 @@ export default function A_Propos() {
                 hoverText="Contactez-moi"
                 href="/contact"
                 bg="bg-white"
-                className="text-white bg-black hover:text-black inline-block z-10 whitespace-nowrap gap-4"
+                className="text-white bg-black hover:text-black inline-block z-10 whitespace-nowrap gap-2 md:gap-4 text-sm md:text-base"
                 icon={<FaEnvelope />}
                 target=""
                 rel=""
+                type="button"
               />
             </MagneticButton>
           </div>

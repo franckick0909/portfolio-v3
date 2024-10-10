@@ -22,8 +22,8 @@ export const Section: React.FC<{
 
   const y = useTransform(scrollYProgress, [0, 1], ["-20%", "10%"]);
   return (
-    <section ref={sectionRef} className="relative h-screen overflow-hidden ">
-      <motion.div style={{ y }} className="absolute w-full h-[120%] z-[2000]">
+    <section ref={sectionRef} className="relative h-screen overflow-hidden z-10">
+      <motion.div style={{ y }} className="absolute w-full h-[120%]">
         <Image
           src={imageSrc}
           alt={title || "Image du projet"}
@@ -36,7 +36,7 @@ export const Section: React.FC<{
         <div className="absolute inset-0 bg-black/30 z-0" />
       </motion.div>
 
-      <div className="relative flex flex-col gap-4 text-white p-24 z-[2001]">
+      <div className="relative flex flex-col gap-4 text-white p-24 z-10">
         <h2 className="text-4xl font-bold max-w-[25ch]">{title}</h2>
         <p className="text-sm uppercase">{tag}</p>
 

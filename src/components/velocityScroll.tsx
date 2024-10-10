@@ -113,7 +113,7 @@ export function VelocityScroll({
                       alt="Inline image"
                       width={300}
                       height={200}
-                      className="inline-block mx-2 align-middle object-cover object-center w-96 h-48"
+                      className="inline-block mx-2 align-middle object-cover object-center w-96 h-48 filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-95 rounded-full"
                     />
                   )}
                 </React.Fragment>

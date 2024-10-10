@@ -1,10 +1,17 @@
-"use client";
-
 import { projectsData } from "@/data/data";
 import ProjectDisplay, { Project } from "@/components/projectDisplay";
 import PageTransition from "@/components/pageTransition";
 import PageEnterTransition from "@/components/pageEnterTransition";
 import { Section } from "@/components/section";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Portfolio V2",
+  description: "Portfolio version 2, plus moderne et responsive avec Next.js, TailwindCSS, TypeScript et Framer Motion.",
+  keywords: ["Portfolio", "Version 2", "Franck Chapelon", "React", "TypeScript", "TailwindCSS", "Next.js", "Framer Motion"],
+  authors: [{ name: "Franck Chapelon" }],
+  creator: "Franck Chapelon | Développeur web front-end",
+};
 
 export default function ProjetDbMovies() {
     const currentProjectIndex = projectsData.findIndex((p) => p.id === "03");

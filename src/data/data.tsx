@@ -15,14 +15,14 @@ export const navLinks = [
     href: "/#services",
   },
   {
-    id: "À propos",
-    name: "À propos",
-    href: "/#a_propos",
-  },
-  {
     id: "Tarifs",
     name: "Tarifs",
     href: "/#tarifs",
+  },
+  {
+    id: "À propos",
+    name: "À propos",
+    href: "/#a_propos",
   },
   {
     id: "Contact",
@@ -381,7 +381,7 @@ export const projectsData = [
   },
   {
     id: "04",
-    name: "Sophie Bluel Architecte d'intérieur",
+    name: "Sophie Bluel",
     link: "/projets/all_projets/sophie_bluel",
     site: "https://github.com/franckick0909/Portfolio-architecte-Sophie-Bluel",
     coverImage: "/projets/sophiebluel/appartement-paris-v.png",
@@ -631,9 +631,9 @@ export const accordionItems2 = [
       "Le temps de développement d'un site web varie en fonction de la complexité du projet et des besoins spécifiques du client. Je travaille de manière agile pour garantir un développement rapide et efficace.",
   },
   {
-    title: "Quel est votre processus de développement de site web ?",
+    title: "Qu'est ce qu'un site vitrine ?",
     content:
-      "Je commence par écouter les besoins de votre marque et de vos clients, puis je crée un design qui répond à ces besoins. Je travaille également sur l'expérience utilisateur pour garantir que le site est facile à utiliser et à naviger.",
+      "Un site vitrine est un site web conçu pour présenter les produits, services ou l'image de marque d'une entreprise sans inclure de fonctionnalités trop avancées. Le but est de donner des informations de base sur l'entreprise, de promouvoir les produits ou services, et de collecter des informations de contact des visiteurs.",
   },
   {
     title: "Comment gérez-vous la maintenance de votre site web ?",
@@ -661,3 +661,58 @@ export const dataAbout = {
   subtitle5: "Quand pouvons-nous discuter ?",
   description5: "Tout de suite, je réponds généralement dans la journée, alors n'hésitez pas à me contacter en cliquant sur le bouton ci-dessous.",
 }
+
+export const pricingPlans = [
+  {
+    name: "Basic",
+    description:
+      "Commencez avec les outils essentiels pour booster votre présence en ligne.",
+    monthlyPrice: "999€",
+    dayPrice: "139€",
+    link: "https://github.com/ansub/syntaxUI",
+    features: [
+      "Stratégie SEO & Recommandations",
+      "Analyse des concurrents pour vous démarquer",
+      "Une page ou 4 pages max",
+      "Blogs et réseaux sociaux SEO optimisés",
+      "Formulaire de contact",
+      "Site web responsive",
+      "Nom de domaine + hébergement (1 an)",
+      "Support et maintenance",
+    ],
+  },
+  {
+    name: "Professional",
+    description:
+      "Débloquez des fonctionnalités améliorées et du contenu premium pour booster votre entreprise.",
+    monthlyPrice: "1499€",
+    dayPrice: "159€",
+    link: "https://github.com/ansub/syntaxUI",
+    features: [
+      "Tout dans le plan de base",
+      "Design sur mesure",
+      "Jusqu'à 10 pages",
+      "Support premium",
+      "Formulaire de contact personnalisé",
+      "Formulaire d'inscription",
+      "Formulaire de validation",
+      "Site web responsive",
+      "Nom de domaine + hébergement (1 an)",
+    ],
+  },
+  {
+    name: "Premium",
+    description:
+      "Profitez de toutes les fonctionnalités de notre plan professionnel et plus encore.",
+    monthlyPrice: "2499€",
+    dayPrice: "249€",
+    link: "https://github.com/ansub/syntaxUI",
+    features: [
+      "Tout dans le plan professionnel",
+      "Obtenez des blogs premium illimités",
+      "Pages illimitées",
+      "Ajoutez votre propre clé de modèle AI",
+      "Support premium & sessions de formation",
+    ],
+  },
+];

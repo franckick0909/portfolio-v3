@@ -16,11 +16,11 @@ export default function TextVelocity() {
 
   return (
     <section className="h-full w-full bg-stone-100 relative overflow-hidden">
-      <div className="relative w-full py-4 z-[201] bg-black/90">
+      <div className="relative w-full py-4 z-[201] bg-gradient-to-br from-black to-gray-900">
         <VelocityScroll
           content={content}
           default_velocity={1}
-          className="font-display text-center text-4xl md:text-5xl lg:text-6xl xl:text-9xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white leading-normal py-4"
+          className="font-display text-center text-4xl md:text-5xl lg:text-6xl xl:text-9xl font-black tracking-[-0.02em] text-white drop-shadow-sm leading-normal py-4"
         />
       </div>
     </section>
