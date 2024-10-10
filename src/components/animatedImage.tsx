@@ -47,9 +47,10 @@ export const AnimatedImage: React.FC<AnimatedImageProps> = ({ imageSrc, alt, max
           alt={alt}
           fill
           className="object-cover"
-          sizes="100vw"
-          priority
-          quality={100}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={true}
+          quality={85}
+          loading={true ? "eager" : "lazy"}
         />
       </motion.div>
     </motion.div>
