@@ -19,15 +19,15 @@ export default function A_Propos() {
           <div className="absolute top-0 left-0 w-full h-0 sm:h-full bg-black -rotate-1 shadow-lg z-[-1] opacity-50" />
           <div className="absolute top-0 left-0 w-full h-0 sm:h-full bg-stone-500 -rotate-2 shadow-lg z-[-1] opacity-50" />
           <AnimatedImage
-            imageSrc="/lunette.jpg"
+            imageSrc="/lunette.webp"
             alt="À propos"
             maxHeight="50vh"
           />
           <Image
             src="/lunette.webp"
             alt="À propos"
-            width={500}
-            height={500}
+            width={400}
+            height={400}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="w-full h-full object-cover block md:hidden"
           />

@@ -29,7 +29,7 @@ export default function HomeLoading({ onLoadingComplete }: { onLoadingComplete: 
 
     let loadedImages = 0;
     const totalImages = imagesToPreload.length;
-    const minLoadTime = 3500; // 2 secondes minimum
+    const minLoadTime = 2500; // 2 secondes minimum
     const startTime = Date.now();
 
     const preloadImage = (src: string) => {
