@@ -23,7 +23,11 @@ export const Section: React.FC<{
   const y = useTransform(scrollYProgress, [0, 1], ["-20%", "10%"]);
   return (
     <section ref={sectionRef} className="relative h-screen overflow-hidden z-10">
-      <motion.div style={{ y }} className="absolute w-full h-[120%]">
+      <motion.div
+      initial={{ opacity: 0, filter: "blur(10px)" }}
+      animate={{ opacity: 1, filter: "blur(0px)" }}
+      transition={{ duration: 0.5 }}
+       style={{ y }} className="absolute w-full h-[120%]">
         <Image
           src={imageSrc}
           alt={title || "Image du projet"}
@@ -31,7 +35,7 @@ export const Section: React.FC<{
           className="object-cover"
           sizes="100vw"
           priority
-          quality={100}
+          quality={75}
         />
         <div className="absolute inset-0 bg-black/30 z-0" />
       </motion.div>

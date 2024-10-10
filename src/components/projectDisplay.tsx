@@ -105,7 +105,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
   });
 
   const y1 = useTransform(scrollYProgress, [0, 1], [-200, 2000]);
-  const springY1 = useSpring(y1, { stiffness: 200, damping: 30 });
+  const springY1 = useSpring(y1, { stiffness: 100, damping: 20 });
 
   const y2 = useTransform(scrollYProgress, [0, 1], [-200, 700]);
   const springY2 = useSpring(y2, { stiffness: 200, damping: 30 });
@@ -177,7 +177,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
               height={project.images[0].height}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               loading="lazy"
-              quality={100}
+              quality={75}
               className="object-cover w-full h-auto rounded-lg shadow-lg"
             />
 
@@ -230,7 +230,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
                     height={image.height}
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                     priority
-                    quality={100}
+                    quality={75}
                     className="object-cover w-full h-auto shadow-lg"
                   />
                   <motion.p
@@ -311,7 +311,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
                     height={image.height}
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                     priority
-                    quality={100}
+                    quality={75}
                     className="object-cover w-full h-auto shadow-lg"
                   />
                   <motion.p
@@ -366,7 +366,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({
                     height={image.height}
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                     priority
-                    quality={100}
+                    quality={75}
                     className="object-cover w-full h-auto shadow-lg"
                   />
                   <motion.p
