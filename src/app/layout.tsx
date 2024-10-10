@@ -69,8 +69,6 @@ export default function RootLayout({
           <link rel="preload" as="image" href="/projets/sophiebluel/sophie1.webp" />
           <link rel="preload" as="image" href="/projets/kasa/kasa1.webp" />
           <link rel="preload" as="image" href="/lunette.webp" />
-          <link rel="preload" as="image" href="/snap1.webp" />
-          <link rel="preload" as="image" href="/snap2.webp" />
         </head>
         <body
           className={` ${inter.variable} ${berkshireSwash.variable} ${pinyonScript.variable}  ${luxuriousScript.variable} ${marcellus.variable} ${quintessential.variable} antialiased relative`}
