@@ -24,7 +24,7 @@ export default function A_Propos() {
             maxHeight="50vh"
           />
           <Image
-            src="/lunette.jpg"
+            src="/lunette.webp"
             alt="À propos"
             width={500}
             height={500}

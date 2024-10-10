@@ -80,8 +80,8 @@ export default function Plus() {
                 <div className="h-full relative">
                   <div className=" h-full">
                     <ScrollRevealImages
-                      topImageSrc="/snap1.jpg"
-                      bottomImageSrc="/snap2.jpg"
+                      topImageSrc="/snap1.webp"
+                      bottomImageSrc="/snap2.webp"
                       alt="À propos"
                     />
                   </div>
