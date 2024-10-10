@@ -18,13 +18,6 @@ export default function HomeLoading({ onLoadingComplete }: { onLoadingComplete: 
   useEffect(() => {
     const imagesToPreload = [
       '/projets/tattoo/covertattoo.webp',
-      '/projets/bdMovies/alien1.webp',
-      "/projets/portfoliov2/oeil.webp",
-      "/projets/sophiebluel/sophie1.webp",
-      "/projets/kasa/kasa1.webp",
-      "/lunette.webp",
-      "/snap1.webp",
-      "/snap2.webp",
     ];
 
     let loadedImages = 0;
