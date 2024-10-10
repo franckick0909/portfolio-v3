@@ -11,6 +11,8 @@ import A_Propos from "./a_propos/page";
 import HomeLoading from "./homeLoading";
 import StickyCursor from "@/components/stickyCursor";
 import Tarifs from "./tarifs/page";
+import CookieBanner from "@/components/Utils/cookieBanner";
+
 const Branding = dynamic(() => import("./branding/page"), { ssr: false });
 
 export default function Home() {
@@ -22,7 +24,7 @@ export default function Home() {
     setIsMounted(true);
     const hasLoaded = localStorage.getItem('hasLoaded');
     if (hasLoaded) {
-      setIsLoading(true);  // à changer pour false
+      setIsLoading(false);  // à changer pour false
     }
   }, []);
 
@@ -70,6 +72,7 @@ export default function Home() {
             <Services />
             <Tarifs />
             <A_Propos />
+            <CookieBanner />
           </motion.div>
         )}
       </AnimatePresence>
