@@ -5,11 +5,11 @@ export default function TextVelocity() {
     { type: 'text' as const, content: 'Découvrez notre ' },
     { type: 'image' as const, content: '/projets/bdMovies/alien1.webp' },
     { type: 'text' as const, content: 'expertise en ' },
-    { type: 'image' as const, content: '/projets/tattoo/tattoo1.jpg' },
+    { type: 'image' as const, content: '/projets/tattoo/covertattoo.webp' },
     { type: 'text' as const, content: 'développement web' },
-    { type: 'image' as const, content: '/projets/portfoliov2/oeil.jpg' },
+    { type: 'image' as const, content: '/projets/portfoliov2/oeil.webp' },
     { type: 'text' as const, content: 'et en design' },
-    { type: 'image' as const, content: '/projets/sophieBluel/sophie-bluel.png' },
+    { type: 'image' as const, content: '/projets/sophieBluel/sophie1.webp' },
     { type: 'text' as const, content: 'graphique.' },
 
   ];
