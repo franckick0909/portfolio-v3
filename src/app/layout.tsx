@@ -62,14 +62,6 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <ReactLenis root>
-        <head>
-          <link rel="preload" as="image" href="/projets/tattoo/covertattoo.webp" />
-          <link rel="preload" as="image" href="/projets/bdMovies/alien1.webp" />
-          <link rel="preload" as="image" href="/projets/portfoliov2/oeil.webp" />
-          <link rel="preload" as="image" href="/projets/sophiebluel/sophie1.webp" />
-          <link rel="preload" as="image" href="/projets/kasa/kasa1.webp" />
-          <link rel="preload" as="image" href="/lunette.webp" />
-        </head>
         <body
           className={` ${inter.variable} ${berkshireSwash.variable} ${pinyonScript.variable}  ${luxuriousScript.variable} ${marcellus.variable} ${quintessential.variable} antialiased relative`}
       >
