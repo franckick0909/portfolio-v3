@@ -5,22 +5,9 @@ import React, { useEffect, useRef, useCallback } from 'react';
 const CerclesAnimes: React.FC = () => {
   const backgroundRef = useRef<HTMLDivElement>(null);
 
-  const creerCercles = useCallback(() => {
-    const tailles = [1.2, 1, 0.8, 0.6, 0.2];
-    const vitesses = [9000, 5000, 10000, 8000, 2000];
-    
-    tailles.forEach((taille, index) => {
-      creerCercle(taille, vitesses[index]);
-    });
-  }, []);
+  const creerCercle = useCallback((echelle: number, dureeBase: number) => {
+    if (typeof window === 'undefined') return; // Vérification côté client
 
-  useEffect(() => {
-    if (backgroundRef.current) {
-      creerCercles();
-    }
-  }, [creerCercles]);
-
-  const creerCercle = (echelle: number, dureeBase: number) => {
     const circle = document.createElement('div');
     circle.className = 'absolute rounded-full border-2 border-gray-100';
     
@@ -36,7 +23,22 @@ const CerclesAnimes: React.FC = () => {
     backgroundRef.current?.appendChild(circle);
     
     animerCercle(circle, dureeBase, echelle);
-  };
+  }, []);
+
+  const creerCercles = useCallback(() => {
+    const tailles = [1.2, 1, 0.8, 0.6, 0.2];
+    const vitesses = [9000, 5000, 10000, 8000, 2000];
+    
+    tailles.forEach((taille, index) => {
+      creerCercle(taille, vitesses[index]);
+    });
+  }, [creerCercle]);
+
+  useEffect(() => {
+    if (backgroundRef.current) {
+      creerCercles();
+    }
+  }, [creerCercles]);
 
   const animerCercle = (cercle: HTMLDivElement, dureeBase: number, echelle: number) => {
     const duree = dureeBase + Math.random() * 10000;
