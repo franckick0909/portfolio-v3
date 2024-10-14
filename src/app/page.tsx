@@ -3,16 +3,17 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import Hero from "./hero/page";
-import Projets from "./projets/page";
-import Services from "./services/page";
-import TextVelocity from "./textVelocity/page";
-import A_Propos from "./a_propos/page";
 import HomeLoading from "./homeLoading";
 import StickyCursor from "@/components/stickyCursor";
-import Tarifs from "./tarifs/page";
 import CookieBanner from "@/components/Utils/cookieBanner";
 
+// Ajoutez ces lignes ici
+const Hero = dynamic(() => import("./hero/page"), { ssr: false });
+const Projets = dynamic(() => import("./projets/page"), { ssr: false });
+const Services = dynamic(() => import("./services/page"), { ssr: false });
+const TextVelocity = dynamic(() => import("./textVelocity/page"), { ssr: false });
+const A_Propos = dynamic(() => import("./a_propos/page"), { ssr: false });
+const Tarifs = dynamic(() => import("./tarifs/page"), { ssr: false });
 const Branding = dynamic(() => import("./branding/page"), { ssr: false });
 
 export default function Home() {
@@ -24,7 +25,7 @@ export default function Home() {
     setIsMounted(true);
     const hasLoaded = localStorage.getItem('hasLoaded');
     if (hasLoaded) {
-      setIsLoading(false);  // à changer pour false
+      setIsLoading(true);  // à changer pour false
     }
   }, []);
 
