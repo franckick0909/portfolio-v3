@@ -130,6 +130,7 @@ export default function Projets() {
                     </div>
                     <div className="absolute right-0 hidden md:block z-[400] overflow-visible">
                       <ImageProjets
+                        key={project.id}
                         image={project.coverImage}
                         name={project.name}
                         isHovered={hoveredProject === project.id}
