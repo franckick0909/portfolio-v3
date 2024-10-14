@@ -90,7 +90,7 @@ export default function Projets() {
             ref={(el) => {
               projectRefs.current[index] = el;
             }}
-            className="group relative cursor-pointer bg-white border-b-[1px] py-0 sm:py-2 md:py-4 "
+            className="group relative cursor-pointer bg-white border-b-[1px] py-3 md:py-4 "
             onMouseEnter={() => setHoveredProject(project.id)}
             onMouseLeave={() => setHoveredProject(null)}
             whileHover="hover"

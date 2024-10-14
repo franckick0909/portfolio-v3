@@ -6,9 +6,8 @@ export default function Digits({ id }: { id: string }) {
       {id.split("").map((digit, index) => (
         <motion.span
           key={`top-${index}`}
-          className="font-marcellus font-extralight text-3xl md:text-5xl lg:text-6xl xl:text-8xl pb-2 absolute"
-
-          style={{ left: `${index * 58}%` }} // Ajusté le positionnement horizontal
+          className="font-marcellus text-4xl md:text-5xl lg:text-8xl xl:text-8xl pb-2 absolute flex items-center"
+          style={{ left: `${index * 52}%` }} // Ajusté le positionnement horizontal
           initial={{ y: "200%" }}
           animate={{ y: 0 }}
           transition={{ delay: index * 0.1, duration: 0.5 }}

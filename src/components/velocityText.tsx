@@ -42,7 +42,7 @@ interface VelocityTextProps {
         <div className="sticky top-0 flex h-full items-center overflow-hidden">
           <motion.div
             style={{ skewX, x }}
-            className="origin-bottom-left whitespace-nowrap text-5xl font-black leading-[0.85] md:text-7xl md:leading-[0.85] flex gap-10"
+            className="origin-bottom-left whitespace-nowrap font-black md:text-7xl flex gap-8 font-marcellus"
           >
             {children}
           </motion.div>

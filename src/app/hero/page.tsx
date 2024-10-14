@@ -8,8 +8,6 @@ import CerclesAnimes from "@/components/cerclesAnimés";
 import HeroTransition from "@/components/heroTransition";
 
 export default function Hero() {
-
-  
   return (
     <HeroTransition>
       <motion.section
@@ -20,7 +18,16 @@ export default function Hero() {
         <div className="fixed inset-0 overflow-hidden z-10">
           <div className="flex flex-col items-center justify-center h-full px-4 md:px-8 lg:px-16 xl:px-32">
             <div className="flex flex-col items-center justify-center mb-20 text-3xl md:text-5xl lg:text-6xl xl:text-7xl max-w-full">
-              <div className="flex w-full items-center leading-normal">
+
+              <div className="flex flex-col sm:hidden text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-center leading-normal">
+                <h3 className="font-marcellus z-10 flex items-center">
+                  Je suis un développeur &
+                </h3>
+                <span className="font-pinyon-script text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-light">designer Nextjs</span>
+                <span className="font-marcellus">en freelance</span>
+              </div>
+
+              <div className=" w-full items-center leading-normal hidden sm:flex">
                 <AnimatedText
                   text="Franck Chapelon"
                   className="font-marcellus z-10 font-semibold flex items-center tracking-tight"
@@ -33,7 +40,7 @@ export default function Hero() {
                 />
               </div>
 
-              <div className="flex items-center leading-normal w-full"> 
+              <div className="hidden sm:flex items-center leading-normal w-full">
                 <AnimatedText
                   text="Freelance"
                   className="font-pinyon-script z-10 text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
@@ -54,7 +61,7 @@ export default function Hero() {
 
               <AnimatedText
                 text="Développeur Nextjs"
-                className="font-marcellus z-10 font-semibold leading-normal"
+                className="font-marcellus z-10 font-semibold leading-normal hidden sm:block"
                 delay={0.9}
               />
             </div>
@@ -65,7 +72,6 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-
               {/* Trait horizontal */}
               <motion.div
                 initial={{ width: 0, opacity: 0 }}

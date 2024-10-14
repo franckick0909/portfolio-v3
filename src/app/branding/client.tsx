@@ -31,20 +31,34 @@ export default function Branding() {
     "Vitrine",
     <GiFlatStar key="flat-star" className="text-zinc-400 text-[2vw]" />,
     "Identité Personnalisée",
+
+    "Unique",
+    <GiPolarStar key="polar-star" className="text-zinc-400 text-[2vw]" />,
+    "Propre",
+    <GiNorthStarShuriken
+      key="north-star"
+      className="text-zinc-400 text-[2vw]"
+    />,
+    "Design",
+    <GiDeathStar
+      key="death-star"
+      className="text-end text-zinc-400 text-[2vw]"
+    />,
+    "Marketing",
   ];
 
   return (
-    <section className="relative bg-black text-white min-h-screen w-full py-16 z-[300]">
-      <div className="relative mx-4 md:mx-12 lg:mx-24 xl:mx-48 flex flex-col items-center justify-center mb-20">
-        <div className="flex flex-col items-center justify-center sm:leading-tight">
+    <section className="relative bg-black text-white min-h-screen w-full py-20 z-[300]">
+      <div className="relative mx-4 md:mx-12 lg:mx-24 xl:mx-48 flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
           <AnimatedText
             text="Spécialisé"
-            className="text-[7vw] font-pinyon-script font-light"
+            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-pinyon-script font-light mb-4"
           />
           <div className="flex items-center gap-2 md:gap-8">
             <AnimatedText
               text="Dans la"
-              className="text-[7vw] font-pinyon-script font-light -mr-2"
+              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-pinyon-script font-light -mr-2"
             />
             <motion.div
               initial={{ scaleX: 0 }}
@@ -59,17 +73,17 @@ export default function Branding() {
             ></motion.div>
             <AnimatedText
               text="Création"
-              className="text-[6vw] font-serif font-semibold"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-marcellus font-semibold"
               el="h2"
             />
           </div>
         </div>
-        <div className="relative border-[0.1px] border-zinc-600 w-full sm:w-[72vw] h-[12vw] rounded-full overflow-hidden bg-transparent flex items-center justify-center">
-          <VelocityText containerClassName="relative h-48 flex items-center">
+        <div className="relative border-[0.1px] border-zinc-600 w-full sm:w-[72vw]  rounded-full overflow-hidden bg-transparent flex items-center justify-center my-8 md:my-12 lg:my-16 xl:my-20 h-20 md:h-42 lg:h-48 xl:h-56">
+          <VelocityText containerClassName="relative flex items-center">
             {textVelocity.map((item, index) => (
               <span
                 key={index}
-                className="relative text-[6vw] font-sawarabi-mincho font-light text-zinc-600 hover:text-white transition-all duration-300 flex items-center justify-center"
+                className="relative text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-zinc-600 hover:text-white transition-all duration-300 flex items-center justify-center"
               >
                 {item}
               </span>
@@ -77,12 +91,12 @@ export default function Branding() {
           </VelocityText>
         </div>
 
-        <div className="mt-8 flex flex-col items-center justify-center sm:leading-tight -space-y-4">
+        <div className="flex flex-col items-center justify-center sm:leading-tight">
           <AnimatedText
             text="D'identités de marque"
-            className="text-[6vw] font-serif font-semibold"
+            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-marcellus font-semibold"
           />
-          <div className="relative flex items-center justify-center gap-2">
+          <div className="relative flex items-center justify-center gap-2 py-8">
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
@@ -92,11 +106,11 @@ export default function Branding() {
                 ease: [0.76, 0.1, 0.24, 1],
                 viewport: { once: true, amount: 0.5 },
               }}
-              className="relative h-[0.2px] w-[12vw] bg-zinc-600 origin-left"
+              className="relative h-[0.2px] w-[12vw] bg-zinc-600 origin-left -mt-3 md:-mt-5"
             ></motion.div>
             <AnimatedText
               text="&"
-              className="text-[6vw] font-serif font-light -mr-4 lg:pl-4"
+              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-marcellus font-light -mr-4 lg:pl-4"
             />
             <motion.div
               initial={{ scaleX: 0 }}
@@ -107,12 +121,12 @@ export default function Branding() {
                 ease: [0.76, 0.1, 0.24, 1],
                 viewport: { once: true, amount: 0.5 },
               }}
-              className="relative h-[0.2px] w-[12vw] bg-zinc-600 origin-right"
+              className="relative h-[0.2px] w-[12vw] bg-zinc-600 origin-right -mt-3 md:-mt-5"
             ></motion.div>
           </div>
           <AnimatedText
             text="Sites Web"
-            className="text-[6vw] font-pinyon-script font-light"
+            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-pinyon-script font-light"
           />
           <div className="relative overflow-hidden">
             <motion.div
@@ -130,21 +144,21 @@ export default function Branding() {
               <Arrow
                 fill="white"
                 stroke="none"
-                className="rotate-180 w-[10vw] h-[10vw]"
+                className="rotate-180 w-auto h-full"
               />
             </motion.div>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center mt-20">
-          <h2 className="text-[4vw] font-inter font-light">
+        <div className="flex flex-col items-center justify-center mt-8">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-marcellus font-light text-center">
             Vous avez la vision,
           </h2>
-          <h2 className="text-[4vw] font-inter font-light">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-marcellus font-light text-center">
             je vous aide à vous démarquer.
           </h2>
 
-          <div className="mt-12 sm:mt-20 max-w-[50vw] w-full grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4 text-base md:text-lg">
+          <div className="mt-12 sm:mt-20 max-w-[70vw] md:max-w-[60vw] w-full grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4 text-base md:text-lg font-light text-zinc-100">
             <div className="h-full sm:max-w-[320px] col-span-1">
               <p>
                 Je découvre ce qui faisait déjà partie de votre entreprise. Je
