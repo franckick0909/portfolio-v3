@@ -104,7 +104,7 @@ export default function HomeLoading({ onLoadingComplete }: { onLoadingComplete: 
       setTimeout(() => {
         setIsLoading(false);
         onLoadingComplete();
-      }, 500); // Petit délai pour s'assurer que 100% est affiché
+      }, 2000); // Petit délai pour s'assurer que 100% est affiché
     };
 
     loadImages();

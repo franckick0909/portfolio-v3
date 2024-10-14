@@ -25,7 +25,7 @@ export default function Home() {
     setIsMounted(true);
     const hasLoaded = localStorage.getItem('hasLoaded');
     if (hasLoaded) {
-      setIsLoading(true);  // à changer pour false
+      setIsLoading(false);  // à changer pour false
     }
   }, []);
 
