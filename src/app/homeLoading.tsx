@@ -48,7 +48,6 @@ export default function HomeLoading({ onLoadingComplete }: { onLoadingComplete: 
       '/projets/bdMovies/db11.webp',
       '/projets/bdMovies/db12.webp',
 
-      '/projets/sophiebluel/sophie1.webp',
       '/projets/sophiebluel/sophie2.png',
       '/projets/sophiebluel/sophie3.webp',
       '/projets/sophiebluel/sophie4.png',
@@ -60,6 +59,7 @@ export default function HomeLoading({ onLoadingComplete }: { onLoadingComplete: 
       '/projets/sophiebluel/sophie10.png',
       '/projets/sophiebluel/sophie11.webp',
       '/projets/sophiebluel/sophie12.webp',
+      '/projets/sophiebluel/sophie13.png',
 
       '/projets/portfoliov2/portfolio1.webp',
       '/projets/portfoliov2/portfolio2.webp',

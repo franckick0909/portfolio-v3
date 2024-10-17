@@ -417,7 +417,7 @@ export const projectsData = [
         height: 814,
       },
       {
-        src: "/projets/sophiebluel/sophie1.webp",
+        src: "/projets/sophiebluel/sophie13.png",
         alt: "appartement-paris-v",
         width: 948,
         height: 710,
