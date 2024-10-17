@@ -9,7 +9,7 @@ export default function TextVelocity() {
     { type: 'text' as const, content: 'développement web' },
     { type: 'image' as const, content: '/projets/portfoliov2/oeil.webp' },
     { type: 'text' as const, content: 'et en design' },
-    { type: 'image' as const, content: '/projets/sophieBluel/sophie1.webp' },
+    { type: 'image' as const, content: '/projets/sophieBluel/sophie3.webp' },
     { type: 'text' as const, content: 'graphique.' },
 
   ];
