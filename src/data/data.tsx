@@ -384,7 +384,7 @@ export const projectsData = [
     name: "Sophie Bluel",
     link: "/projets/all_projets/sophie_bluel",
     site: "https://github.com/franckick0909/Portfolio-architecte-Sophie-Bluel",
-    coverImage: "/projets/sophiebluel/sophie1.webp",
+    coverImage: "/projets/sophiebluel/sophie1.png",
     traitBg: "bg-black",
     title1: "Exploration",
     subtitle1: "Créer et itérer",
@@ -405,10 +405,10 @@ export const projectsData = [
     description3_2: "",
     images: [
       {
-        src: "/projets/sophiebluel/sophie2.webp",
-        alt: "Affichage de tous les projets (images) dans l'admin",
-        width: 1000,
-        height: 1105,
+        src: "/projets/sophiebluel/sophie2.png",
+        alt: "Affichage de tous les projets",
+        width: 841,
+        height: 824,
       },
       {
         src: "/projets/sophiebluel/sophie3.webp",
@@ -429,16 +429,16 @@ export const projectsData = [
         height: 814,
       },
       {
-        src: "/projets/sophiebluel/sophie6.webp",
-        alt: "Page d'accueil du site",
-        width: 1120,
-        height: 957,
+        src: "/projets/sophiebluel/sophie4.png",
+        alt: "Page d'authentification admin",
+        width: 1920,
+        height: 909,
       },
       {
-        src: "/projets/sophiebluel/sophie7.webp",
-        alt: "Page d'accueil du site",
-        width: 608,
-        height: 814,
+        src: "/projets/sophiebluel/sophie7.png",
+        alt: "Page d'accueil du site après connexion admin réussie",
+        width: 722,
+        height: 813,
       },
       {
         src: "/projets/sophiebluel/sophie8.webp",
@@ -453,10 +453,10 @@ export const projectsData = [
         height: 814,
       },
       {
-        src: "/projets/sophiebluel/sophie10.webp",
+        src: "/projets/sophiebluel/sophie10.png",
         alt: "Modale ajout ou suppression de projet",
-        width: 846,
-        height: 829,
+        width: 1920,
+        height: 913,
       },
       {
         src: "/projets/sophiebluel/sophie11.webp",
