@@ -118,7 +118,7 @@ export default function Footer() {
           <div className="text-sm mt-16">
             © Franck Chapelon, {new Date().getFullYear()}. Tous droits réservés.
             <Link
-              href="/privacy-policy"
+              href="/politique-de-confidentialite"
               className="ml-4  relative inline-block before:content-[''] before:absolute before:w-full before:h-[1px] before:bottom-0 before:left-0 
                           before:bg-white before:origin-right before:scale-x-0 hover:before:origin-left hover:before:scale-x-100
                           before:transition-transform before:duration-500 before:ease-in-out"
