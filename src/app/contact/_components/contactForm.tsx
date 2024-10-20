@@ -17,6 +17,12 @@ interface FormData {
   message: string;
 }
 
+interface Errors {
+  name?: string;
+  email?: string;
+  // Ajoutez d'autres champs si nécessaire
+}
+
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -33,7 +39,7 @@ export default function ContactForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
-  const [errors, setErrors] = useState<{ [key: string]: boolean }>({});
+  const [errors, setErrors] = useState<Errors>({});
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -56,16 +62,27 @@ export default function ContactForm() {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
 
-    // Réinitialiser l'erreur lorsque l'utilisateur commence à taper
+    // Validation en temps réel
     if (name === 'name' || name === 'email') {
-      setErrors(prev => ({ ...prev, [name]: false }));
+      setErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
 
   const validateForm = () => {
-    const newErrors: { [key: string]: boolean } = {};
-    if (!formData.name.trim()) newErrors.name = true;
-    if (!formData.email.trim()) newErrors.email = true;
+    const newErrors: Errors = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = "Le nom est requis";
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = "Le nom doit contenir au moins 2 caractères";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "L'email est requis";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "L'adresse email n'est pas valide";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -74,9 +91,6 @@ export default function ContactForm() {
     event.preventDefault();
     
     if (!validateForm()) {
-      setModalMessage("Veuillez remplir tous les champs obligatoires.");
-      setIsSuccess(false);
-      setIsModalOpen(true);
       return;
     }
 
@@ -152,7 +166,7 @@ export default function ContactForm() {
             value={formData.name}
             name="name"
             id="name"
-            className={`px-0 py-1 border-b-2 ${errors.name ? 'border-red-500 z-50' : 'border-stone-200'} outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10`}
+            className={`px-0 py-1 border-b-2 ${errors.name ? 'border-red-500' : 'border-stone-200'} outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10 hover:border-b-black hover:border-b-2`}
             required
             aria-required="true"
           />
@@ -162,7 +176,7 @@ export default function ContactForm() {
           >
             Nom *
           </label>
-          <span className={`absolute bottom-0 left-0 w-full h-0.5 scale-x-0 ${errors.name ? 'bg-red-500' : 'bg-stone-400'} transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2`}></span>
+          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
         </div>
 
         <div className="flex flex-col relative group">
@@ -173,7 +187,7 @@ export default function ContactForm() {
             value={formData.email}
             name="email"
             id="email"
-            className={`px-0 py-1 border-b-2 ${errors.email ? 'border-red-500 z-50' : 'border-stone-200'} outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10`}
+            className={`px-0 py-1 border-b-2 ${errors.email ? 'border-red-500' : 'border-stone-200'} outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10 hover:border-b-black hover:border-b-2`}
             required
             aria-required="true"
           />
@@ -183,7 +197,7 @@ export default function ContactForm() {
           >
             Email *
           </label>
-          <span className={`absolute bottom-0 left-0 w-full h-0.5 scale-x-0 ${errors.email ? 'bg-red-500' : 'bg-stone-400'} transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2`}></span>
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
         </div>
 
         <div className="flex flex-col relative group">
