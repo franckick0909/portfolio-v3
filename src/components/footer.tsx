@@ -103,8 +103,10 @@ export default function Footer() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-2xl text-gray-400 hover:text-white transition-colors"
+                          aria-label={`Visitez notre page ${link.name}`}
                         >
-                          <link.icon />
+                          <link.icon aria-hidden="true" />
+                          <span className="sr-only">{link.name}</span>
                         </Link>
                       </li>
                     ))}
