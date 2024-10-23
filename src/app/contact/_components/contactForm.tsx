@@ -166,7 +166,7 @@ export default function ContactForm() {
             value={formData.name}
             name="name"
             id="name"
-            className={`px-0 py-1 border-b-2 ${errors.name ? 'border-red-500' : 'border-stone-200'} outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10 hover:border-b-black hover:border-b-2`}
+            className={`px-0 py-1 border-b-2 ${errors.name ? 'border-red-500' : 'border-stone-200'} outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10`}
             required
             aria-required="true"
           />
@@ -176,6 +176,7 @@ export default function ContactForm() {
           >
             Nom *
           </label>
+          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
           {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
         </div>
 
@@ -187,7 +188,7 @@ export default function ContactForm() {
             value={formData.email}
             name="email"
             id="email"
-            className={`px-0 py-1 border-b-2 ${errors.email ? 'border-red-500' : 'border-stone-200'} outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10 hover:border-b-black hover:border-b-2`}
+            className={`px-0 py-1 border-b-2 ${errors.email ? 'border-red-500' : 'border-stone-200'} outline-none bg-transparent peer focus:border-b-black focus:border-b-[3px] text-base z-10`}
             required
             aria-required="true"
           />
@@ -197,6 +198,7 @@ export default function ContactForm() {
           >
             Email *
           </label>
+          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
         </div>
 
@@ -324,13 +326,12 @@ export default function ContactForm() {
 
           <div className="flex flex-wrap gap-4">
             {[
-              "< 500",
-              "500-1k",
-              "1-2k",
-              "2-5k",
-              "5-10k",
-              "10-15k",
-              "> 20k",
+              "< 999€",
+              "999€-1200€",
+              "1200€-1499€",
+              "1499€-2000€",
+              "2000€-2499€",
+              "> 2500€",
             ].map((option) => (
               <label
                 key={option}
@@ -417,7 +418,7 @@ export default function ContactForm() {
                   Envoyer la demande
                 </span>
                 <span className="absolute top-full inset-0 inline-block whitespace-nowrap">
-                  <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full text-black py-1 md:py-2 font-pinyon-script text-2xl md:text-2xl lg:text-4xl font-medium">
+                  <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full text-black py-1 md:pt-2 font-pinyon-script text-2xl md:text-2xl lg:text-4xl font-medium">
                     <div className="flex items-center gap-2">
                       Envoyer
                       <FaMailBulk className="" />
@@ -439,7 +440,7 @@ export default function ContactForm() {
                   Réinitialiser
                 </span>
                 <span className="absolute top-full inset-0 inline-block whitespace-nowrap">
-                  <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full text-white py-1 md:py-2 font-pinyon-script text-2xl md:text-2xl lg:text-4xl font-medium leading-[0.9]">
+                  <span className="relative inline-block transition-transform duration-500 ease-in-out group-hover:-translate-y-full text-white py-2 md:py-1 font-pinyon-script text-2xl md:text-2xl lg:text-4xl font-medium leading-[0.9]">
                     Effacer
                   </span>
                 </span>

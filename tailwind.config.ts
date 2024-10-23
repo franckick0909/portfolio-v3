@@ -20,10 +20,5 @@ const config: Config = {
     },
   },
   plugins: [],
-  safelist: [
-    'hover:border-b-black',
-    'hover:border-b-2',
-    // Ajoutez d'autres classes de hover si nécessaire
-  ],
 };
 export default config;

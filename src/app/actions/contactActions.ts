@@ -20,7 +20,7 @@ export async function sendContactEmail(formData: FormData) {
     const mailOptions = {
       from: process.env.EMAIL_FROM,
       to: process.env.EMAIL_TO,
-      subject: 'Nouveau message de contact',
+      subject: 'Nouveau message de Portfolio-v3',
       text: `
         Nom: ${formData.get('name')}
         Email: ${formData.get('email')}

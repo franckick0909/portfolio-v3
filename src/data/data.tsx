@@ -636,9 +636,9 @@ export const accordionItems2 = [
       "Un site vitrine est un site web conçu pour présenter les produits, services ou l'image de marque d'une entreprise sans inclure de fonctionnalités trop avancées. Le but est de donner des informations de base sur l'entreprise, de promouvoir les produits ou services, et de collecter des informations de contact des visiteurs.",
   },
   {
-    title: "Comment gérez-vous la maintenance de votre site web ?",
+    title: "Qu'est ce que des cookies ?",
     content:
-      "Je propose des services de maintenance de site web, y compris la mise à jour du contenu, la correction de bugs et la résolution de problèmes de performance.",
+      "Les cookies sont des fichiers texte stockés sur votre ordinateur lorsque vous naviguez sur un site web. Ils sont utilisés pour collecter des informations sur votre navigation, comme les pages que vous avez visitées, les liens que vous avez cliqués, et les informations que vous avez fournies lors de formulaires.",
   },
   {
     title: "Faites-vous le référencement naturel (SEO) ?",

@@ -9,6 +9,7 @@ interface StickyCursorProps {
 
 const StickyCursor: React.FC<StickyCursorProps> = ({ stickyElements = [] }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMediumScreen, setIsMediumScreen] = useState(false);
   const cursor = useRef<HTMLDivElement>(null);
 
   const mouse = {
@@ -44,7 +45,18 @@ const StickyCursor: React.FC<StickyCursorProps> = ({ stickyElements = [] }) => {
   }, [scale]);
 
   useEffect(() => {
-    if (!stickyElements || stickyElements.length === 0) return; // Vérification supplémentaire
+    const checkScreenSize = () => {
+      setIsMediumScreen(window.innerWidth < 768); // 768px est généralement la breakpoint pour 'md'
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  useEffect(() => {
+    if (isMediumScreen || !stickyElements || stickyElements.length === 0) return;
 
     const elements = stickyElements.flatMap(selector => 
       Array.from(document.querySelectorAll(selector))
@@ -64,7 +76,9 @@ const StickyCursor: React.FC<StickyCursorProps> = ({ stickyElements = [] }) => {
       });
       window.removeEventListener("mousemove", manageMouseMove);
     };
-  }, [stickyElements, manageMouseMove, manageMouseOver, manageMouseLeave]);
+  }, [stickyElements, manageMouseMove, manageMouseOver, manageMouseLeave, isMediumScreen]);
+
+  if (isMediumScreen) return null;
 
   return (
     <>

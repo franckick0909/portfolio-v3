@@ -73,7 +73,7 @@ export default function Branding() {
             ></motion.div>
             <AnimatedText
               text="Création"
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-marcellus font-semibold"
+              className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-marcellus font-semibold"
               el="h2"
             />
           </div>
