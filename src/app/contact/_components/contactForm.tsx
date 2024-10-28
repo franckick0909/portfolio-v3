@@ -176,7 +176,7 @@ export default function ContactForm() {
           >
             Nom *
           </label>
-          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
+          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2 z-20"></span>
           {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
         </div>
 
@@ -198,7 +198,7 @@ export default function ContactForm() {
           >
             Email *
           </label>
-          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
+          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2 z-20"></span>
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
         </div>
 
@@ -218,7 +218,7 @@ export default function ContactForm() {
           >
             Tél
           </label>
-          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
+          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2 z-20"></span>
         </div>
 
         {/* DEUXIEME PARTIE */}
@@ -251,7 +251,7 @@ export default function ContactForm() {
           >
             Nom de votre entreprise
           </label>
-          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
+          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2 z-20"></span>
         </div>
 
         <div className="flex flex-col relative group">
@@ -271,7 +271,7 @@ export default function ContactForm() {
           >
             Site web actuel
           </label>
-          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
+          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2 z-20"></span>
         </div>
 
         <div className="flex flex-col gap-2">
@@ -366,7 +366,7 @@ export default function ContactForm() {
           >
             Avez-vous un budget exact ?
           </label>
-          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
+          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2 z-20"></span>
         </div>
 
         <div className="flex flex-col relative group">
@@ -385,7 +385,7 @@ export default function ContactForm() {
           >
             Quel est votre délai ?
           </label>
-          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
+          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2 z-20"></span>
         </div>
 
         <div className="flex flex-col relative group">
@@ -404,7 +404,7 @@ export default function ContactForm() {
           >
             Message
           </label>
-          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2"></span>
+          <span className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-stone-400 transition-all duration-300 group-hover:scale-x-100 origin-left peer-focus:border-b-black peer-focus:border-b-2 z-20"></span>
         </div>
 
         <div className="flex items-center justify-between gap-4">
